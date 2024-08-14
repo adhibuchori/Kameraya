@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="8dp"
+    app:cardCornerRadius="8dp"
+    app:strokeColor="@color/neutral_20">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_row_camera_store_linear_camera_image"
+            android:layout_width="80dp"
+            android:layout_height="0dp"
+            android:scaleType="fitCenter"
+            android:background="@color/white"
+            android:src="@drawable/iv_placeholder"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/RoundImageViewItemCameraStoreLinearStyle"
+            tools:ignore="ImageContrastCheck" />
+
+        <TextView
+            android:id="@+id/tv_row_camera_store_linear_camera_name"
+            style="@style/KamerayaTextViewStyle.BodySmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/camera_name"
+            android:textColor="@color/neutral_30"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_row_camera_store_linear_camera_image"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_row_camera_store_linear_camera_price"
+            style="@style/KamerayaTextViewStyle.BodyMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
+            android:text="@string/camera_price"
+            android:textColor="@color/neutral_40"
+            app:layout_constraintStart_toEndOf="@+id/iv_row_camera_store_linear_camera_image"
+            app:layout_constraintTop_toBottomOf="@+id/tv_row_camera_store_linear_camera_name" />
+
+        <ImageView
+            android:id="@+id/iv_row_camera_store_linear_camera_store_icon"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/iv_row_camera_store_camera_store_icon_description"
+            android:src="@drawable/ic_store"
+            app:layout_constraintStart_toEndOf="@+id/iv_row_camera_store_linear_camera_image"
+            app:layout_constraintTop_toBottomOf="@+id/tv_row_camera_store_linear_camera_price" />
+
+        <TextView
+            android:id="@+id/tv_row_camera_store_linear_camera_store"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:fontFamily="@font/plus_jakarta_sans_regular"
+            android:includeFontPadding="false"
+            android:text="@string/camera_store"
+            android:textColor="@color/neutral_30"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_row_camera_store_linear_camera_store_icon"
+            app:layout_constraintStart_toEndOf="@+id/iv_row_camera_store_linear_camera_store_icon"
+            app:layout_constraintTop_toTopOf="@+id/iv_row_camera_store_linear_camera_store_icon"
+            tools:ignore="SmallSp" />
+
+        <ImageView
+            android:id="@+id/iv_row_camera_store_linear_camera_review_icon"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginVertical="8dp"
+            android:layout_marginStart="10dp"
+            android:contentDescription="@string/iv_row_camera_store_camera_review_icon_description"
+            android:src="@drawable/ic_star"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_row_camera_store_linear_camera_image"
+            app:layout_constraintTop_toBottomOf="@+id/iv_row_camera_store_linear_camera_store_icon" />
+
+        <TextView
+            android:id="@+id/tv_row_camera_store_linear_camera_review"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:fontFamily="@font/plus_jakarta_sans_regular"
+            android:includeFontPadding="false"
+            android:text="@string/camera_review"
+            android:textColor="@color/neutral_30"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_row_camera_store_linear_camera_review_icon"
+            app:layout_constraintStart_toEndOf="@+id/iv_row_camera_store_linear_camera_review_icon"
+            app:layout_constraintTop_toTopOf="@+id/iv_row_camera_store_linear_camera_review_icon"
+            tools:ignore="SmallSp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

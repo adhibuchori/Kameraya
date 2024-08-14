@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.home.HomeFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/cl_store_page"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/siv_home_page_profile_picture"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/profile_picture_placeholder"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/RoundImageViewStyle" />
+
+            <TextView
+                android:id="@+id/tv_home_page_welcome_message"
+                style="@style/KamerayaTextViewStyle.BodyLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/plus_jakarta_sans_semi_bold"
+                android:text="@string/welcome_message"
+                android:textColor="@color/neutral_40"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/siv_home_page_profile_picture" />
+
+            <TextView
+                android:id="@+id/tv_home_page_explore_message"
+                style="@style/KamerayaTextViewStyle.BodySmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="7dp"
+                android:text="@string/find_perfect_camera"
+                android:textColor="@color/neutral_30"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_home_page_welcome_message" />
+
+            <com.google.android.material.search.SearchBar
+                android:id="@+id/sb_home_page"
+                style="@style/OutlinedSearchBarStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/search_camera"
+                app:layout_constraintEnd_toStartOf="@+id/mcv_home_page_notification_icon_container"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_home_page_explore_message" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mcv_home_page_cart_icon_container"
+                android:layout_width="57dp"
+                android:layout_height="57dp"
+                android:layout_marginEnd="16dp"
+                app:cardCornerRadius="100dp"
+                app:layout_constraintBottom_toBottomOf="@+id/sb_home_page"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/sb_home_page"
+                app:strokeColor="@color/neutral_20">
+
+                <ImageView
+                    android:id="@+id/iv_home_page_cart_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/iv_home_page_cart_icon_description"
+                    android:src="@drawable/ic_cart"
+                    app:tint="@color/neutral_40" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mcv_home_page_notification_icon_container"
+                android:layout_width="57dp"
+                android:layout_height="57dp"
+                android:layout_marginEnd="8dp"
+                app:cardCornerRadius="100dp"
+                app:layout_constraintBottom_toBottomOf="@+id/sb_home_page"
+                app:layout_constraintEnd_toStartOf="@+id/mcv_home_page_cart_icon_container"
+                app:layout_constraintTop_toTopOf="@+id/sb_home_page"
+                app:strokeColor="@color/neutral_20">
+
+                <ImageView
+                    android:id="@+id/iv_home_page_notification_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/iv_home_page_notification_icon_description"
+                    android:src="@drawable/ic_notification" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <android.widget.HorizontalScrollView
+                android:id="@+id/hsv_home_page_chip_container"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:fillViewport="true"
+                android:scrollbars="none"
+                app:layout_constraintEnd_toStartOf="@+id/d_home_page_divider"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sb_home_page">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/cg_home_page"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:chipSpacingHorizontal="8dp"
+                    app:singleSelection="true"
+                    tools:ignore="VisualLintBounds">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/c_home_page_reviews"
+                        style="@style/ChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/chip_rating" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/c_home_page_sales"
+                        style="@style/ChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/chip_sale" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/c_home_page_lowest_price"
+                        style="@style/ChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/chip_lowest" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/c_home_page_highest_price"
+                        style="@style/ChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/chip_highest"
+                        tools:ignore="TextContrastCheck" />
+
+                </com.google.android.material.chip.ChipGroup>
+
+            </android.widget.HorizontalScrollView>
+
+            <ImageView
+                android:id="@+id/iv_home_page_set_layout_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:contentDescription="@string/iv_home_page_set_layout_view_description"
+                android:src="@drawable/ic_list_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sb_home_page" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/d_home_page_divider"
+                android:layout_width="1dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_home_page_set_layout_view"
+                app:layout_constraintEnd_toStartOf="@+id/iv_home_page_set_layout_view"
+                app:layout_constraintTop_toTopOf="@+id/iv_home_page_set_layout_view" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_home_page"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginVertical="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hsv_home_page_chip_container" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <ProgressBar
+        android:id="@+id/pb_home_page_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

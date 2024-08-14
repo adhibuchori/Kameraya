@@ -1,0 +1,208 @@
+<resources>
+    <string name="app_name">カメラ屋</string>
+    <string name="app_subtitle">カメラ屋</string>
+    <string name="app_copyright">© 2024 adhibuchori 個人プロジェクト</string>
+
+    <!-- On Boarding -->
+    <string name="skip">スキップ</string>
+    <string name="next">次へ</string>
+    <string name="first_on_boarding_title">カメラ屋へようこそ！</string>
+    <string name="second_on_boarding_title">簡単にカメラを購入</string>
+    <string name="third_on_boarding_title">限定オファーと割引</string>
+    <string name="first_on_boarding_description">カメラ屋で様々なカメラやアクセサリーを簡単に見つけてください。</string>
+    <string name="second_on_boarding_description">カメラ屋で便利で安全なショッピング体験をお楽しみください。</string>
+    <string name="third_on_boarding_description">カメラ屋でのみアクセスできる限定オファーや特別な割引を手に入れましょう。</string>
+
+    <!-- Authentication -->
+    <string name="login">ログイン</string>
+    <string name="login_description">世界をキャッチしよう</string>
+    <string name="register">登録</string>
+    <string name="register_description">登録してキャッチしよう</string>
+    <string name="input_profile_picture">プロフィール写真を入力してください</string>
+    <string name="username">ユーザー名</string>
+    <string name="email">メール</string>
+    <string name="password">パスワード</string>
+    <string name="dialog_select_profile_question">プロフィール写真をどこから選びますか？</string>
+    <string name="btn_camera">カメラ</string>
+    <string name="btn_gallery">ギャラリー</string>
+
+    <string name="no_account">
+        <font>アカウントを持っていませんか？</font>
+        <font color="#E67E9E"><u>%1$s</u></font>
+    </string>
+
+    <string name="have_account">
+        <font>すでにアカウントを持っていますか？</font>
+        <font color="#E67E9E"><u>%1$s</u></font>
+    </string>
+
+    <!-- Dialog Box -->
+    <string name="dialog_question">ダイアログの質問は？</string>
+    <string name="dialog_negative_button">キャンセル</string>
+    <string name="dialog_positive_button">はい</string>
+
+    <!-- Bottom Navigation -->
+    <string name="navigation_home">ホーム</string>
+    <string name="navigation_transaction">取引</string>
+    <string name="navigation_wishlist">ウィッシュリスト</string>
+    <string name="navigation_profile">プロフィール</string>
+
+    <!-- Home -->
+    <string name="search_camera">カメラを検索</string>
+    <string name="find_perfect_camera">完璧なカメラを見つけよう！</string>
+    <string name="welcome_message">ようこそ、%s</string>
+    <string name="filter">フィルター</string>
+    <string name="camera_label">ラベル</string>
+
+    <!-- Item Row Camera Store Linear -->
+    <string name="camera_name">カメラ名</string>
+    <string name="camera_price">0</string>
+    <string name="camera_store">カメラ店</string>
+    <string name="camera_review">%s | 売上 %s</string>
+
+    <!-- Chip -->
+    <string name="chip_rating">レビュー</string>
+    <string name="chip_sale">セール</string>
+    <string name="chip_lowest">最低価格</string>
+    <string name="chip_highest">最高価格</string>
+
+    <!-- Search -->
+    <string name="search_history_placeholder">検索履歴</string>
+
+    <!-- Notification -->
+    <string name="navigation_notification">通知</string>
+    <string name="notification_info">通知情報</string>
+    <string name="notification_status">通知ステータス</string>
+    <string name="notification_description">通知の説明</string>
+
+    <!-- Cart -->
+    <string name="navigation_cart">カート</string>
+    <string name="btn_checkout">チェックアウト</string>
+    <string name="total_payment">合計支払い</string>
+    <string name="total_payment_data">Rp0</string>
+    <string name="select_all_product">すべて選択</string>
+    <string name="tv_btn_delete_product">削除</string>
+
+    <!-- Item Row Checkout -->
+    <string name="camera_stock_remaining">残り %s</string>
+    <string name="camera_stock_available">残り %s</string>
+    <string name="camera_count">0</string>
+
+    <!-- Profile -->
+    <string name="logout">ログアウト</string>
+    <string name="email_data">メールデータ</string>
+    <string name="username_data">ユーザー名データ</string>
+    <string name="switch_theme_dark">ダーク</string>
+    <string name="switch_theme_light">ライト</string>
+    <string name="switch_language_japanese">JP</string>
+    <string name="switch_language_english">EN</string>
+    <string name="dialog_logout_question">本当にログアウトしますか？</string>
+    <string name="btn_logout">はい</string>
+    <string name="btn_cancel">キャンセル</string>
+
+    <!-- Wishlist -->
+    <string name="add_to_cart">+ カート</string>
+    <string name="wishlist_quantity">%s アイテム</string>
+
+    <!-- Transaction -->
+    <string name="transaction_date"><b>ショッピング</b> | %s</string>
+    <string name="transaction_status">ステータス</string>
+    <string name="transaction_quantity">%s アイテム</string>
+    <string name="transaction_total_title">総ショッピング額</string>
+    <string name="transaction_total">Rp0</string>
+    <string name="btn_transaction_review">レビュー</string>
+
+    <!-- Review -->
+    <string name="user_review_data">ユーザーレビューデータ</string>
+    <string name="review_navigation">レビューのナビゲーション</string>
+
+    <!-- Product Detail -->
+    <string name="product_detail_navigation">商品詳細</string>
+    <string name="btn_buy_now">今すぐ購入</string>
+    <string name="btn_add_cart">+ カートに追加</string>
+    <string name="btn_remove_cart">カート</string>
+    <string name="camera_sold">0</string>
+    <string name="camera_rate_and_review">%s (%s)</string>
+    <string name="camera_select_variant">バリエーションを選択</string>
+    <string name="camera_label_variant">バリエーションを選択</string>
+    <string name="camera_description_title">カメラの説明</string>
+    <string name="camera_description">カメラの説明</string>
+    <string name="buyer_review_title">購入者レビュー</string>
+    <string name="camera_rate">0</string>
+    <string name="camera_rate_max">/5.0</string>
+    <string name="camera_rate_and_review_detail">%s レビュー • %s コメント</string>
+    <string name="satisfied_buyers">%s%% の購入者が満足</string>
+    <string name="see_all">すべて見る</string>
+
+    <!-- Checkout -->
+    <string name="btn_buy">購入</string>
+    <string name="item_purchased_title">アイテム購入済み</string>
+    <string name="payment_method_title">支払い方法</string>
+    <string name="choose_payment_method">支払い方法を選択</string>
+    <string name="checkout_item_quantity">%s 個</string>
+
+    <!-- Choose Payment Method -->
+    <string name="virtual_account_title">仮想口座</string>
+    <string name="bank_transfer_title">銀行振込</string>
+    <string name="instant_payment_title">即時支払い</string>
+
+    <!-- Payment Status -->
+    <string name="payment_status_navigation">支払い状況</string>
+    <string name="payment_info">支払い成功</string>
+    <string name="payment_rate_title">取引レート</string>
+    <string name="payment_review">取引レビュー</string>
+    <string name="payment_review_data">取引レビューデータ</string>
+    <string name="payment_review_hint">取引をレビューする</string>
+    <string name="payment_detail_title">取引詳細</string>
+    <string name="payment_id_title">取引ID</string>
+    <string name="payment_id_data">取引IDデータ</string>
+    <string name="payment_status_title">取引ステータス</string>
+    <string name="payment_status_data">取引ステータスデータ</string>
+    <string name="payment_date_title">日付</string>
+    <string name="payment_date_data">日付データ</string>
+    <string name="payment_time_title">時間</string>
+    <string name="payment_time_data">時間データ</string>
+    <string name="payment_method_data">支払い方法データ</string>
+    <string name="payment_total_title">合計支払い額</string>
+    <string name="payment_total_data">合計支払い額データ</string>
+    <string name="btn_done">完了</string>
+
+    <!-- Content Description -->
+    <string name="iv_splash_page_app_logo_description">カメラヤアプリのロゴ</string>
+    <string name="iv_slider_on_boarding_description">オンボーディング画像</string>
+    <string name="iv_login_page_app_logo_description">カメラヤアプリのロゴ</string>
+    <string name="civ_register_page_add_photo_background_icon_description">写真追加の背景アイコン</string>
+    <string name="iv_register_page_add_photo_icon_description">写真を追加するボタン</string>
+    <string name="iv_register_page_profile_image_placeholder_description">プロフィール画像のプレースホルダー</string>
+    <string name="iv_register_page_arrow_back_icon_description">戻る矢印アイコン</string>
+    <string name="iv_row_camera_store_camera_store_icon_description">店舗アイコン</string>
+    <string name="iv_row_camera_store_camera_review_icon_description">レビューアイコン</string>
+    <string name="iv_home_page_set_layout_view_description">レイアウトビューアイコンを設定</string>
+    <string name="iv_home_page_notification_icon_description">通知アイコン</string>
+    <string name="iv_home_page_cart_icon_description">カートアイコン</string>
+    <string name="iv_toolbar_arrow_back_icon_description">戻る矢印アイコン</string>
+    <string name="iv_profile_page_rectangle_dash_description">矩形ダッシュ画像の境界線</string>
+    <string name="iv_profile_page_profile_picture_description">プロフィール画像のプレースホルダー</string>
+    <string name="iv_search_page_arrow_back_icon_description">戻る矢印アイコン</string>
+    <string name="iv_row_wishlist_remove_favorite_icon_description">お気に入り解除アイコン</string>
+    <string name="iv_row_transaction_shopping_basket_icon_description">ショッピングバスケットアイコン</string>
+    <string name="iv_row_search_search_icon_description">検索アイコン</string>
+    <string name="iv_row_search_arrow_next_icon_description">次の矢印アイコン</string>
+    <string name="iv_item_dialog_box_image_description">ダイアログボックスベクタープレースホルダー</string>
+    <string name="iv_item_dialog_close_icon_description">閉じるアイコン</string>
+    <string name="iv_product_detail_page_favorite_icon_description">お気に入りアイコン</string>
+    <string name="iv_product_detail_page_share_icon_description">共有アイコン</string>
+    <string name="iv_product_detail_page_buyer_review_icon_description">レビューアイコン</string>
+    <string name="iv_product_detail_page_star_icon_description">星アイコン</string>
+    <string name="iv_slider_content_description">スライダーコンテンツ詳細ページ</string>
+    <string name="iv_checkout_page_payment_method_icon_description">支払い方法アイコン</string>
+    <string name="mcv_checkout_page_arrow_next_icon_description">次の矢印アイコン</string>
+    <string name="iv_bottom_sheet_close_icon_description">閉じるアイコン</string>
+    <string name="iv_item_row_payment_method_image_description">支払い方法の画像プレースホルダー</string>
+    <string name="iv_item_row_payment_method_arrow_next_icon_description">次の矢印アイコン</string>
+    <string name="iv_payment_status_page_description">支払いステータスベクター</string>
+    <string name="iv_row_wishlist_linear_add_to_cart_icon_description">カートに追加アイコン</string>
+    <string name="iv_checkout_page_addition_icon_description">追加アイコン</string>
+    <string name="iv_checkout_page_subtraction_icon_description">減算アイコン</string>
+
+</resources>

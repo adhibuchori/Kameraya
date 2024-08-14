@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="8dp">
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/mcb_row_cart_select_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcv_row_cart_camera_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/mcb_row_cart_select_product"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="@color/neutral_20">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_row_cart_camera_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mcv_row_cart_camera_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:layout_marginStart="10dp"
+                app:cardCornerRadius="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:strokeColor="@color/neutral_10">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/siv_row_cart_camera_image"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/iv_placeholder"
+                    app:shapeAppearanceOverlay="@style/RoundImageViewStyle"
+                    tools:ignore="ImageContrastCheck" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/tv_row_cart_camera_name"
+                style="@style/KamerayaTextViewStyle.BodyMedium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/plus_jakarta_sans_medium"
+                android:maxLines="1"
+                android:text="@string/camera_name"
+                android:textColor="@color/neutral_40"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/mcv_row_cart_camera_image"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_row_cart_camera_variant"
+                style="@style/KamerayaTextViewStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="5dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/camera_label_variant"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/mcv_row_cart_camera_image"
+                app:layout_constraintTop_toBottomOf="@+id/tv_row_cart_camera_name"
+                tools:ignore="SmallSp" />
+
+            <TextView
+                android:id="@+id/tv_row_cart_camera_stock"
+                style="@style/KamerayaTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/plus_jakarta_sans_medium"
+                android:text="@string/camera_stock_remaining"
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="10sp"
+                app:layout_constraintStart_toEndOf="@+id/mcv_row_cart_camera_image"
+                app:layout_constraintTop_toBottomOf="@+id/tv_row_cart_camera_variant"
+                tools:ignore="SmallSp" />
+
+            <TextView
+                android:id="@+id/tv_row_cart_price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/camera_price"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/mcv_row_cart_camera_image"
+                app:layout_constraintTop_toBottomOf="@+id/tv_row_cart_camera_stock" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mcv_row_cart_camera_count_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                app:cardCornerRadius="100dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_row_cart_price">
+
+                <LinearLayout
+                    android:id="@+id/ln_cart_page_camera_count_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="5dp">
+
+                    <ImageView
+                        android:id="@+id/iv_cart_page_subtraction_icon"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="@string/iv_checkout_page_subtraction_icon_description"
+                        android:src="@drawable/ic_subtraction" />
+
+                    <TextView
+                        android:id="@+id/tv_cart_page_camera_count"
+                        style="@style/KamerayaTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:text="@string/camera_count"
+                        tools:ignore="SmallSp" />
+
+                    <ImageView
+                        android:id="@+id/iv_cart_page_addition_icon"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="@string/iv_checkout_page_addition_icon_description"
+                        android:src="@drawable/ic_addition"
+                        tools:ignore="ImageContrastCheck" />
+
+                </LinearLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mcv_row_cart_linear_remove_cart_container"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="12dp"
+                android:padding="10dp"
+                app:cardCornerRadius="100dp"
+                app:layout_constraintBottom_toBottomOf="@+id/mcv_row_cart_camera_count_container"
+                app:layout_constraintEnd_toStartOf="@+id/mcv_row_cart_camera_count_container"
+                app:layout_constraintTop_toTopOf="@+id/mcv_row_cart_camera_count_container">
+
+                <ImageView
+                    android:id="@+id/iv_row_cart_linear_remove_cart_icon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/iv_row_wishlist_remove_favorite_icon_description"
+                    android:src="@drawable/ic_remove_favorite"
+                    tools:ignore="ImageContrastCheck" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

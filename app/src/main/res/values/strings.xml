@@ -1,0 +1,210 @@
+<resources>
+    <string name="app_name">カメラ屋</string>
+    <string name="app_subtitle">Kameraya</string>
+    <string name="app_copyright">© 2024 adhibuchori Personal Project</string>
+
+    <!-- On Boarding -->
+    <string name="skip">Skip</string>
+    <string name="next">Next</string>
+    <string name="first_on_boarding_title">Welcome to Kameraya!</string>
+    <string name="second_on_boarding_title">Buy Cameras with Ease</string>
+    <string name="third_on_boarding_title">Exclusive Offers and Discounts</string>
+    <string name="first_on_boarding_description">Easily find various cameras and accessories at Kameraya.</string>
+    <string name="second_on_boarding_description">Enjoy a convenient and secure shopping experience at Kameraya.</string>
+    <string name="third_on_boarding_description">Get access to exclusive offers and special discounts only at Kameraya.</string>
+
+    <!-- Authentication -->
+    <string name="login">Login</string>
+    <string name="login_description">Let’s Capture the World</string>
+    <string name="register">Register</string>
+    <string name="register_description">Register and Capture</string>
+    <string name="input_profile_picture">Input Your Profile Picture</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="dialog_select_profile_question">Select profile picture from?</string>
+    <string name="btn_camera">Kamera</string>
+    <string name="btn_gallery">Galeri</string>
+
+    <string name="no_account">
+        <font>Do not have an account?</font>
+        <font color="#E67E9E"><u>%1$s</u></font>
+    </string>
+
+    <string name="have_account">
+        <font>Already have an account?</font>
+        <font color="#E67E9E"><u>%1$s</u></font>
+    </string>
+
+    <!-- Dialog Box -->
+    <string name="dialog_question">Dialog Question?</string>
+    <string name="dialog_negative_button">Negative</string>
+    <string name="dialog_positive_button">Positive</string>
+
+    <!-- Bottom Navigation -->
+    <string name="navigation_home">Home</string>
+    <string name="navigation_transaction">Transaction</string>
+    <string name="navigation_wishlist">Wishlist</string>
+    <string name="navigation_profile">Profile</string>
+
+    <!-- Home -->
+    <string name="search_camera">Search Camera</string>
+    <string name="find_perfect_camera">Find your perfect camera!</string>
+    <string name="welcome_message">Welcome, %s</string>
+    <string name="filter">Filter</string>
+    <string name="camera_label">Label</string>
+
+    <!-- Item Row Camera Store Linear -->
+    <string name="camera_name">Camera Name</string>
+    <string name="camera_price">0</string>
+    <string name="camera_store">Camera Store</string>
+    <string name="camera_review">%s | Terjual %s</string>
+
+    <!-- Chip -->
+    <string name="chip_rating">Review</string>
+    <string name="chip_sale">Sale</string>
+    <string name="chip_lowest">Lowest Price</string>
+    <string name="chip_highest">Highest Price</string>
+
+    <!-- Search -->
+    <string name="search_history_placeholder">Search History</string>
+
+    <!-- Notification -->
+    <string name="navigation_notification">Notification</string>
+    <string name="notification_info">Notification Info</string>
+    <string name="notification_status">Notification Status</string>
+    <string name="notification_description">Notification Description</string>
+
+    <!-- Cart -->
+    <string name="navigation_cart">Cart</string>
+    <string name="btn_checkout">Checkout</string>
+    <string name="total_payment">Total Payment</string>
+    <string name="total_payment_data">Rp0</string>
+    <string name="select_all_product">Select All</string>
+    <string name="tv_btn_delete_product">Delete</string>
+
+    <!-- Item Row Checkout -->
+    <string name="camera_stock_remaining">Remaining %s</string>
+    <string name="camera_stock_available">Available %s</string>
+    <string name="camera_count">0</string>
+
+    <!-- Profile -->
+    <string name="logout">Logout</string>
+    <string name="email_data">Email Data</string>
+    <string name="username_data">Username Data</string>
+    <string name="switch_theme_dark">Dark</string>
+    <string name="switch_theme_light">Light</string>
+    <string name="switch_language_japanese">JP</string>
+    <string name="switch_language_english">EN</string>
+    <string name="dialog_logout_question">"Are you sure you want to logout?"</string>
+    <string name="btn_logout">Sure</string>
+    <string name="btn_cancel">Cancel</string>
+
+    <!-- Wishlist -->
+    <string name="add_to_cart">+ Cart</string>
+    <string name="wishlist_quantity">%s Item</string>
+
+    <!-- Transaction -->
+    <string name="transaction_date"><b>Shopping</b> | %s</string>
+    <string name="transaction_status">Status</string>
+    <string name="transaction_quantity">%s Item</string>
+    <string name="transaction_total_title">Total Shopping</string>
+    <string name="transaction_total">Rp0</string>
+    <string name="btn_transaction_review">Review</string>
+
+    <!-- Review -->
+    <string name="user_review_data">User Review Data</string>
+    <string name="review_navigation">Review Navigation</string>
+
+    <!-- Product Detail -->
+    <string name="product_detail_navigation">Product Detail</string>
+    <string name="btn_buy_now">Buy Now</string>
+    <string name="btn_add_cart">+ Add Cart</string>
+    <string name="btn_remove_cart">Cart</string>
+    <string name="camera_sold">0</string>
+    <string name="camera_rate_and_review">%s (%s)</string>
+    <string name="camera_select_variant">Choose Variant</string>
+    <string name="camera_label_variant">Choose Variant</string>
+    <string name="camera_description_title">Camera Description</string>
+    <string name="camera_description">Camera Description</string>
+    <string name="buyer_review_title">Buyer Review</string>
+    <string name="camera_rate">0</string>
+    <string name="camera_rate_max">/5.0</string>
+    <string name="camera_rate_and_review_detail">%s rating • %s review</string>
+    <string name="satisfied_buyers">%s%% buyers are satisfied</string>
+    <string name="see_all">See All</string>
+
+    <!-- Checkout -->
+    <string name="btn_buy">Buy</string>
+    <string name="item_purchased_title">Item Purchased</string>
+    <string name="payment_method_title">Payment Method</string>
+    <string name="choose_payment_method">Choose Payment Method</string>
+    <string name="checkout_item_quantity">%s Item</string>
+
+    <!-- Choose Payment Method -->
+    <string name="virtual_account_title">Virtual Account</string>
+    <string name="bank_transfer_title">Bank Transfer</string>
+    <string name="instant_payment_title">Instant Payment</string>
+
+    <!-- Payment Status -->
+    <string name="payment_status_navigation">Payment Status</string>
+    <string name="payment_info">Payment Successful</string>
+    <string name="payment_rate_title">Transaction Rate</string>
+    <string name="payment_review">Transaction Review</string>
+    <string name="payment_review_data">Transaction Review Data</string>
+    <string name="payment_review_hint">Review Your Transaction</string>
+    <string name="payment_detail_title">Transaction Details</string>
+    <string name="payment_id_title">Transaction ID</string>
+    <string name="payment_id_data">Transaction ID Data</string>
+    <string name="payment_status_title">Transaction Status</string>
+    <string name="payment_status_data">Transaction Status Data</string>
+    <string name="payment_date_title">Date</string>
+    <string name="payment_date_data">Date Data</string>
+    <string name="payment_time_title">Time</string>
+    <string name="payment_time_data">Time Data</string>
+    <string name="payment_method_data">Payment Method Data</string>
+    <string name="payment_total_title">Total Payment</string>
+    <string name="payment_total_data">Total Payment Data</string>
+    <string name="btn_done">Done</string>
+
+    <!-- Content Description -->
+    <string name="iv_splash_page_app_logo_description">Kameraya App Logo</string>
+    <string name="iv_slider_on_boarding_description">Image On Boarding</string>
+    <string name="iv_login_page_app_logo_description">Kameraya App Logo</string>
+    <string name="civ_register_page_add_photo_background_icon_description">Background Icon for Adding a Photo</string>
+    <string name="iv_register_page_add_photo_icon_description">Button to Add a Photo</string>
+    <string name="iv_register_page_profile_image_placeholder_description">Placeholder for the Profile Image</string>
+    <string name="iv_register_page_arrow_back_icon_description">Arrow Back Icon</string>
+    <string name="iv_row_camera_store_camera_store_icon_description">Store Icon</string>
+    <string name="iv_row_camera_store_camera_review_icon_description">Review Icon</string>
+    <string name="iv_home_page_set_layout_view_description">Set Layout View Icon</string>
+    <string name="iv_home_page_notification_icon_description">Notification Icon</string>
+    <string name="iv_home_page_cart_icon_description">Cart Icon</string>
+    <string name="iv_toolbar_arrow_back_icon_description">Arrow Back Icon</string>
+    <string name="iv_profile_page_rectangle_dash_description">Rectangle Dash Image Border</string>
+    <string name="iv_profile_page_profile_picture_description">Placeholder for the Profile Image</string>
+    <string name="iv_search_page_arrow_back_icon_description">Arrow Back Icon</string>
+    <string name="iv_row_wishlist_remove_favorite_icon_description">Remove Favorite Icon</string>
+    <string name="iv_row_transaction_shopping_basket_icon_description">Shopping Basket Icon</string>
+    <string name="iv_row_search_search_icon_description">Search Icon</string>
+    <string name="iv_row_search_arrow_next_icon_description">Arrow Next Icon</string>
+    <string name="iv_item_dialog_box_image_description">Dialog Box Vector Placeholder</string>
+    <string name="iv_item_dialog_close_icon_description">Close Icon</string>
+    <string name="iv_product_detail_page_favorite_icon_description">Favorite Icon</string>
+    <string name="iv_product_detail_page_share_icon_description">Share Icon</string>
+    <string name="iv_product_detail_page_buyer_review_icon_description">Review Icon</string>
+    <string name="iv_product_detail_page_star_icon_description">Star Icon</string>
+    <string name="iv_slider_content_description">Slider Content Detail Page</string>
+    <string name="iv_checkout_page_payment_method_icon_description">Payment Method Icon</string>
+    <string name="mcv_checkout_page_arrow_next_icon_description">Arrow Next Icon</string>
+    <string name="iv_bottom_sheet_close_icon_description">Close Icon</string>
+    <string name="iv_item_row_payment_method_image_description">Payment Method Image Placeholder</string>
+    <string name="iv_item_row_payment_method_arrow_next_icon_description">Arrow Next Icon</string>
+    <string name="iv_payment_status_page_description">Payment Status Vector</string>
+    <string name="iv_row_wishlist_linear_add_to_cart_icon_description">Add to Cart Icon</string>
+    <string name="iv_checkout_page_addition_icon_description">Addition Icon</string>
+    <string name="iv_checkout_page_subtraction_icon_description">Subtraction Icon</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

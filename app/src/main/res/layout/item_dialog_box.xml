@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/white"
+    app:strokeColor="@android:color/transparent">
+
+    <LinearLayout
+        android:id="@+id/ln_item_dialog_box_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_item_dialog_close_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="@string/iv_item_dialog_close_icon_description"
+            android:src="@drawable/ic_close"
+            tools:ignore="ImageContrastCheck" />
+
+        <ImageView
+            android:id="@+id/iv_item_dialog_box_image"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginHorizontal="75dp"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@string/iv_item_dialog_box_image_description"
+            tools:src="@tools:sample/backgrounds/scenic" />
+
+        <TextView
+            android:id="@+id/tv_item_dialog_box_question"
+            style="@style/KamerayaTextViewStyle.BodyMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:gravity="center"
+            android:text="@string/dialog_question" />
+
+        <LinearLayout
+            android:id="@+id/ln_item_dialog_box_button_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_item_dialog_box_negative"
+                style="@style/KamerayaOutlinedButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/plus_jakarta_sans_medium"
+                android:text="@string/dialog_negative_button"
+                tools:ignore="TextContrastCheck" />
+
+            <View
+                android:layout_width="8dp"
+                android:layout_height="0dp" />
+
+            <Button
+                android:id="@+id/btn_item_dialog_box_positive"
+                style="@style/KamerayaTextViewStyle.BodyMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/plus_jakarta_sans_medium"
+                android:text="@string/dialog_positive_button"
+                tools:ignore="TouchTargetSizeCheck,TextContrastCheck,VisualLintBounds" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

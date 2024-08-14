@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="8dp"
+    app:cardCornerRadius="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_row_transaction_shopping_basket_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:contentDescription="@string/iv_row_transaction_shopping_basket_icon_description"
+            android:src="@drawable/ic_shopping_basket"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_row_transaction_transaction_date"
+            style="@style/KamerayaTextViewStyle.BodySmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="@string/transaction_date"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_row_transaction_shopping_basket_icon"
+            app:layout_constraintStart_toEndOf="@+id/iv_row_transaction_shopping_basket_icon"
+            app:layout_constraintTop_toTopOf="@+id/iv_row_transaction_shopping_basket_icon"
+            tools:ignore="SmallSp" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcv_row_transaction_transaction_status_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            app:cardBackgroundColor="@color/color_primary_light"
+            app:cardCornerRadius="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@android:color/transparent">
+
+            <TextView
+                android:id="@+id/tv_row_transaction_transaction_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans_semi_bold"
+                android:includeFontPadding="false"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp"
+                android:text="@string/transaction_status"
+                android:textColor="@color/color_primary"
+                android:textSize="10sp"
+                tools:ignore="SmallSp,TextContrastCheck" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/md_row_transaction_divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mcv_row_transaction_transaction_status_container" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/siv_row_transaction_camera_image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/iv_placeholder"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/md_row_transaction_divider"
+            app:shapeAppearanceOverlay="@style/RoundImageViewStyle"
+            tools:ignore="ImageContrastCheck" />
+
+        <TextView
+            android:id="@+id/tv_row_transaction_camera_name"
+            style="@style/KamerayaTextViewStyle.BodyMedium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/plus_jakarta_sans_medium"
+            android:text="@string/camera_name"
+            android:textColor="@color/neutral_40"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/siv_row_transaction_camera_image"
+            app:layout_constraintTop_toTopOf="@+id/siv_row_transaction_camera_image" />
+
+        <TextView
+            android:id="@+id/tv_row_transaction_transaction_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/plus_jakarta_sans_regular"
+            android:includeFontPadding="false"
+            android:text="@string/transaction_quantity"
+            android:textSize="10sp"
+            app:layout_constraintStart_toEndOf="@+id/siv_row_transaction_camera_image"
+            app:layout_constraintTop_toBottomOf="@+id/tv_row_transaction_camera_name"
+            tools:ignore="SmallSp" />
+
+
+        <TextView
+            android:id="@+id/tv_row_transaction_transaction_total_title"
+            style="@style/KamerayaTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/transaction_total_title"
+            android:textColor="@color/neutral_30"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/siv_row_transaction_camera_image" />
+
+        <TextView
+            android:id="@+id/tv_row_transaction_transaction_total"
+            style="@style/KamerayaTextViewStyle.BodySmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/plus_jakarta_sans_semi_bold"
+            android:text="@string/transaction_total"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_row_transaction_transaction_total_title" />
+
+        <Button
+            android:id="@+id/btn_row_transaction_review"
+            style="@style/KamerayaTextViewStyle.BodyMedium"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/plus_jakarta_sans_medium"
+            android:text="@string/btn_transaction_review"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_row_transaction_transaction_total_title"
+            tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck,VisualLintButtonSize" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

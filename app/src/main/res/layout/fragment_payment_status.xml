@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.payment.paymentStatus.PaymentStatusFragment">
+
+    <include
+        android:id="@+id/payment_status_toolbar"
+        layout="@layout/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_payment_status_page_done"
+        app:layout_constraintTop_toBottomOf="@+id/payment_status_toolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mcv_payment_status_page_payment_status_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="80dp"
+                app:cardCornerRadius="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/iv_payment_status_page"
+                app:strokeColor="@color/neutral_20">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_payment_status_page_payment_info"
+                        style="@style/KamerayaTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="64dp"
+                        android:fontFamily="@font/plus_jakarta_sans_bold"
+                        android:text="@string/payment_info"
+                        android:textColor="@color/neutral_30"
+                        android:textSize="22sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_payment_status_page_payment_rate"
+                        style="@style/KamerayaTextViewStyle.BodySmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/payment_rate_title"
+                        android:textColor="@color/neutral_30"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_payment_status_page_payment_info" />
+
+                    <androidx.appcompat.widget.AppCompatRatingBar
+                        android:id="@+id/rb_payment_status_page_payment_rate"
+                        style="@style/Widget.AppCompat.RatingBar.Indicator"
+                        android:layout_width="wrap_content"
+                        android:isIndicator="false"
+                        android:stepSize="0.5"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:layout_constraintStart_toStartOf="@+id/tv_payment_status_page_payment_rate"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_payment_status_page_payment_rate" />
+
+                    <TextView
+                        android:id="@+id/tv_payment_status_page_payment_review"
+                        style="@style/KamerayaTextViewStyle.BodySmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/payment_review"
+                        android:textColor="@color/neutral_30"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/rb_payment_status_page_payment_rate" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_payment_status_page_payment_review"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_payment_status_page_payment_review">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tiet_login_page_email"
+                            style="@style/KamerayaTextViewStyle.BodyMedium"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="top"
+                            android:hint="@string/payment_review_hint"
+                            android:inputType="textMultiLine"
+                            android:textColor="@color/neutral_40"
+                            tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <ImageView
+                android:id="@+id/iv_payment_status_page"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:contentDescription="@string/iv_payment_status_page_description"
+                android:src="@drawable/iv_payment_status"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ImageContrastCheck" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/md_payment_status_page"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                app:dividerColor="@color/neutral_20"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mcv_payment_status_page_payment_status_container" />
+
+            <TextView
+                android:id="@+id/tv_payment_status_page_payment_detail_title"
+                style="@style/KamerayaTextViewStyle.BodySmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/payment_detail_title"
+                android:textColor="@color/neutral_30"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/md_payment_status_page" />
+
+            <TableLayout
+                android:id="@+id/tl_review_page_transaction_detail_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_payment_status_page_payment_detail_title">
+
+                <TableRow>
+
+                    <TextView
+                        android:id="@+id/tv_payment_status_page_payment_id_title"
+                        style="@style/KamerayaTextViewStyle.BodySmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/payment_id_title"
+                        android:textColor="@color/neutral_30" />
+
+                    <TextView
+                        android:id="@+id/tv_payment_status_page_payment_id_data"
+                        style="@style/KamerayaTextViewStyle.BodySmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/plus_jakarta_sans_semi_bold"
+                        android:gravity="end"
+                        android:text="@string/payment_id_data"
+                        android:textColor="@color/neutral_40" />
+
+                </TableRow>
+
+                <TableRow android:layout_marginTop="12dp">
+
+                    <TextView
+                        android:id="@+id/tv_payment_status_page_payment_status_title"
+                        style="@style/KamerayaTextViewStyle.BodySmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/payment_status_title"
+                        android:textColor="@color/neutral_30" />
+
+                    <TextView
+                        android:id="@+id/tv_payment_status_page_payment_status_data"
+                        style="@style/KamerayaTextViewStyle.BodySmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/plus_jakarta_sans_semi_bold"
+                        android:gravity="end"
+                        android:text="@string/payment_status_data"
+                        android:textColor="@color/neutral_40" />
+
+                </TableRow>
+
+                <TableRow android:layout_marginTop="12dp">
+
+                    <TextView
+                        android:id="@+id/tv_payment_status_page_payment_date_title"
+                        style="@style/KamerayaTextViewStyle.BodySmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/payment_date_title"
+                        android:textColor="@color/neutral_30" />
+
+                    <TextView
+                        android:id="@+id/tv_payment_status_page_payment_date_data"
+                        style="@style/KamerayaTextViewStyle.BodySmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/plus_jakarta_sans_semi_bold"
+                        android:gravity="end"
+                        android:text="@string/payment_date_data"
+                        android:textColor="@color/neutral_40" />
+
+                </TableRow>
+
+                <TableRow android:layout_marginTop="12dp">
+
+                    <TextView
+                        android:id="@+id/tv_payment_status_page_payment_time_title"
+                        style="@style/KamerayaTextViewStyle.BodySmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/payment_time_title"
+                        android:textColor="@color/neutral_30" />
+
+                    <TextView
+                        android:id="@+id/tv_payment_status_page_payment_time_data"
+                        style="@style/KamerayaTextViewStyle.BodySmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/plus_jakarta_sans_semi_bold"
+                        android:gravity="end"
+                        android:text="@string/payment_time_data"
+                        android:textColor="@color/neutral_40" />
+
+                </TableRow>
+
+                <TableRow android:layout_marginTop="12dp">
+
+                    <TextView
+                        android:id="@+id/tv_payment_status_page_payment_method_title"
+                        style="@style/KamerayaTextViewStyle.BodySmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/payment_method_title"
+                        android:textColor="@color/neutral_30" />
+
+                    <TextView
+                        android:id="@+id/tv_payment_status_page_payment_method_data"
+                        style="@style/KamerayaTextViewStyle.BodySmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/plus_jakarta_sans_semi_bold"
+                        android:gravity="end"
+                        android:text="@string/payment_method_data"
+                        android:textColor="@color/neutral_40" />
+
+                </TableRow>
+
+                <TableRow android:layout_marginTop="12dp">
+
+                    <TextView
+                        android:id="@+id/tv_payment_status_page_payment_total_title"
+                        style="@style/KamerayaTextViewStyle.BodySmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/payment_total_title"
+                        android:textColor="@color/neutral_30" />
+
+                    <TextView
+                        android:id="@+id/tv_payment_status_page_payment_total_data"
+                        style="@style/KamerayaTextViewStyle.BodySmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/plus_jakarta_sans_semi_bold"
+                        android:gravity="end"
+                        android:text="@string/payment_total_data"
+                        android:textColor="@color/neutral_40" />
+
+                </TableRow>
+
+            </TableLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_payment_status_page_done"
+        style="@style/KamerayaTextViewStyle.BodyMedium"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/plus_jakarta_sans_medium"
+        android:text="@string/btn_done"
+        app:layout_constraintBottom_toTopOf="@+id/tv_payment_status_page_copyright"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck,VisualLintButtonSize" />
+
+    <TextView
+        android:id="@+id/tv_payment_status_page_copyright"
+        style="@style/KamerayaTextViewStyle.BodySmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="@string/app_copyright"
+        android:textColor="@color/neutral_20"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TextContrastCheck" />
+
+    <ProgressBar
+        android:id="@+id/pb_payment_status_page_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

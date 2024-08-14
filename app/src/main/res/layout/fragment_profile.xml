@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.profile.ProfileFragment">
+
+    <include
+        android:id="@+id/profile_page_toolbar"
+        layout="@layout/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_profile_page_rectangle_dash"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="100dp"
+        android:contentDescription="@string/iv_profile_page_rectangle_dash_description"
+        android:src="@drawable/iv_rectangle_dash"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_page_toolbar" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_profile_page_profile_picture"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:contentDescription="@string/iv_profile_page_profile_picture_description"
+        android:scaleType="centerCrop"
+        android:src="@drawable/profile_picture_placeholder"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_profile_page_rectangle_dash"
+        app:layout_constraintEnd_toEndOf="@+id/iv_profile_page_rectangle_dash"
+        app:layout_constraintStart_toStartOf="@+id/iv_profile_page_rectangle_dash"
+        app:layout_constraintTop_toTopOf="@+id/iv_profile_page_rectangle_dash"
+        app:shapeAppearanceOverlay="@style/RoundImageViewStyle" />
+
+    <TextView
+        android:id="@+id/tv_profile_page_copyright"
+        style="@style/KamerayaTextViewStyle.BodySmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="@string/app_copyright"
+        android:textColor="@color/neutral_20"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/tv_profile_page_username_data"
+        style="@style/KamerayaTextViewStyle.BodyLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/plus_jakarta_sans_semi_bold"
+        android:text="@string/username_data"
+        android:textColor="@color/neutral_40"
+        app:layout_constraintEnd_toEndOf="@+id/iv_profile_page_rectangle_dash"
+        app:layout_constraintStart_toStartOf="@+id/iv_profile_page_rectangle_dash"
+        app:layout_constraintTop_toBottomOf="@+id/iv_profile_page_rectangle_dash" />
+
+    <TextView
+        android:id="@+id/tv_profile_page_email_data"
+        style="@style/KamerayaTextViewStyle.BodySmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/email_data"
+        android:textColor="@color/neutral_30"
+        app:layout_constraintEnd_toEndOf="@+id/tv_profile_page_username_data"
+        app:layout_constraintStart_toStartOf="@+id/tv_profile_page_username_data"
+        app:layout_constraintTop_toBottomOf="@+id/tv_profile_page_username_data" />
+
+    <TextView
+        android:id="@+id/tv_profile_page_language_english"
+        style="@style/KamerayaTextViewStyle.BodyMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="@string/switch_language_english"
+        app:layout_constraintBottom_toBottomOf="@+id/s_profile_page_language"
+        app:layout_constraintEnd_toStartOf="@+id/s_profile_page_language"
+        app:layout_constraintTop_toTopOf="@+id/s_profile_page_language" />
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/s_profile_page_language"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_profile_page_email_data"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <TextView
+        android:id="@+id/tv_profile_page_language_indonesian"
+        style="@style/KamerayaTextViewStyle.BodyMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/switch_language_japanese"
+        app:layout_constraintBottom_toBottomOf="@+id/s_profile_page_language"
+        app:layout_constraintStart_toEndOf="@+id/s_profile_page_language"
+        app:layout_constraintTop_toTopOf="@+id/s_profile_page_language" />
+
+    <TextView
+        android:id="@+id/tv_profile_page_theme_light"
+        style="@style/KamerayaTextViewStyle.BodyMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="@string/switch_theme_light"
+        app:layout_constraintBottom_toBottomOf="@+id/s_profile_page_theme"
+        app:layout_constraintEnd_toStartOf="@+id/s_profile_page_theme"
+        app:layout_constraintTop_toTopOf="@+id/s_profile_page_theme" />
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/s_profile_page_theme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/s_profile_page_language" />
+
+    <TextView
+        android:id="@+id/tv_profile_page_theme_night"
+        style="@style/KamerayaTextViewStyle.BodyMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/switch_theme_dark"
+        app:layout_constraintBottom_toBottomOf="@+id/s_profile_page_theme"
+        app:layout_constraintStart_toEndOf="@+id/s_profile_page_theme"
+        app:layout_constraintTop_toTopOf="@+id/s_profile_page_theme" />
+
+    <Button
+        android:id="@+id/btn_profile_page_logout"
+        style="@style/KamerayaTextViewStyle.BodyMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/plus_jakarta_sans_medium"
+        android:text="@string/logout"
+        app:layout_constraintEnd_toEndOf="@+id/tv_profile_page_email_data"
+        app:layout_constraintStart_toStartOf="@+id/tv_profile_page_email_data"
+        app:layout_constraintTop_toBottomOf="@+id/s_profile_page_theme"
+        tools:ignore="TextContrastCheck" />
+
+    <ProgressBar
+        android:id="@+id/pb_profile_page_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
