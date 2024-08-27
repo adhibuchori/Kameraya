@@ -11,13 +11,17 @@
 Experience secure transactions with real-time payment status updates powered by Firebase Remote Config, ensuring peace of mind with every order. Enjoy the ultimate user experience, enhanced by smooth animations. Built with XML, Kameraya is designed for speed and reliability, offering a seamless shopping experience. Available starting from Android 8.0 "Oreo", Kameraya brings the world of cameras to your fingertips.
 
 ## App Preview
-<div align="center">
-  <img src="https://drive.google.com/uc?export=view&id=1kwhdjm2h6Gma_ri8pppNRNuroPPZFsjc" alt="カメラ屋 (Kameraya) App Preview">
-  <p>Figure 2. カメラ屋 (Kameraya) App Preview.</p>
-</div>
+[Put Video Here]
 
 ## Table of Contents
-
+1. [App Introduction](#app-introduction)
+2. [App Preview](#app-preview)
+3. [Tech Stack](#tech-stack)
+4. [App Features](#app-features)
+5. [App Architecture](#app-architecture)
+6. [Design Pattern](#design-pattern)
+7. [Dependency Injection](#dependency-injection)
+8. [Installation](#installation)
 
 ## Tech Stack
 <div align="center">
@@ -48,4 +52,35 @@ Experience secure transactions with real-time payment status updates powered by 
 | **Firebase Analytics**| Collects and analyzes user behavior data, providing valuable insights into app usage and user interactions.                                    | Firebase Analytics                                        |
 | **API Logging**       | Monitors and logs API network activity for debugging and optimizing network requests, ensuring efficient data handling.                        | OkHttp Logging Interceptor                                |
 
-#Soon
+## App Architecture
+<div align="center">
+ <img src="https://drive.google.com/uc?id=1ovtfICiUVKW645vAFOw3MfgSlBeyszdr" alt="カメラ屋 (Kameraya) App Architecture">
+  <p>Figure 4. カメラ屋 (Kameraya) App Architecture.</p>
+</div>
+
+| **Module**    | **Description**                                                                                                     |
+|---------------|---------------------------------------------------------------------------------------------------------------------|
+| **UI Module** | Responsible for displaying the user interface, including screens, ViewModels, and handling the app's startup process. This module manages all user interactions and visual elements. |
+| **Domain Module** | Contains domain models, repository interfaces, and use cases. It is independent of external libraries, ensuring stability and focusing solely on the app's business logic and core functionality. |
+| **Data Module** | Manages network requests and local data operations. This module includes response and entity models, and repository implementations, handling data retrieval and persistence from remote servers or local databases. |
+
+## Design Pattern
+<div align="center">
+ <img src="https://drive.google.com/uc?id=1ovtfICiUVKW645vAFOw3MfgSlBeyszdr" alt="カメラ屋 (Kameraya) App Design Pattern">
+  <p>Figure 5. カメラ屋 (Kameraya) App Design Pattern</p>
+</div>
+
+| **Component** | **Description**                                                                                                           |
+|---------------|---------------------------------------------------------------------------------------------------------------------------|
+| **Model**     | Represents the application's data layer, including data models, data handling logic, and business rules. It interacts with data sources such as APIs or databases and serves as the authoritative source of data within the application. |
+| **View**      | The user interface layer that presents data to the user and forwards user inputs to the ViewModel. |
+| **ViewModel** | Acts as a mediator between the Model and the View. It processes data for display, manages the UI state, and handles user interactions. The ViewModel provides data to the View through observable data holders like LiveData or StateFlow, enabling the View to update in response to data changes without directly accessing the Model. |
+
+## Dependency Injection
+<div align="center">
+ <img src="https://drive.google.com/uc?id=1iLHt4uzNePrDjxhIiVcIVYbcRTfIx5ju" alt="カメラ屋 (Kameraya) App Design Pattern">
+  <p>Figure 6. カメラ屋 (Kameraya) Dependency Injection.</p>
+</div>
+
+## Installation
+Download the application through the following Google Drive [link here](https://drive.google.com/file/d/1FmtERCCnyo1Edjp8KBAMWiNVEhHygxC-/view?usp=drive_link). Available starting from Android 8.0 "Oreo".
