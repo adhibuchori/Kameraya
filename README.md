@@ -11,7 +11,10 @@
 Experience secure transactions with real-time payment status updates powered by Firebase Remote Config, ensuring peace of mind with every order. Enjoy the ultimate user experience, enhanced by smooth animations. Built with XML, Kameraya is designed for speed and reliability, offering a seamless shopping experience. Available starting from Android 8.0 "Oreo", Kameraya brings the world of cameras to your fingertips.
 
 ## App Preview
-[Put Video Here]
+<div align="center">
+  <img src="https://drive.google.com/uc?export=view&id=1kwhdjm2h6Gma_ri8pppNRNuroPPZFsjc" alt="カメラ屋 (Kameraya) App Preview">
+  <p>Figure 2. カメラ屋 (Kameraya) App Preview.</p>
+</div>
 
 ## Table of Contents
 1. [App Introduction](#app-introduction)
@@ -21,7 +24,8 @@ Experience secure transactions with real-time payment status updates powered by 
 5. [App Architecture](#app-architecture)
 6. [Design Pattern](#design-pattern)
 7. [Dependency Injection](#dependency-injection)
-8. [Installation](#installation)
+8. [Project Document](#project-document)
+9. [Installation](#installation)
 
 ## Tech Stack
 <div align="center">
@@ -81,6 +85,9 @@ Experience secure transactions with real-time payment status updates powered by 
  <img src="https://drive.google.com/uc?id=1iLHt4uzNePrDjxhIiVcIVYbcRTfIx5ju" alt="カメラ屋 (Kameraya) App Design Pattern">
   <p>Figure 6. カメラ屋 (Kameraya) Dependency Injection.</p>
 </div>
+
+## Project Document
+Explore further insights and detailed information regarding this project by clicking on the following link: [カメラ屋 (Kameraya) Project Document](https://drive.google.com/file/d/1HKo9yEBHLmMOcmU_VikhMhKzXMmJClWS/view?usp=sharing).
 
 ## Installation
 Download the application through the following Google Drive [link here](https://drive.google.com/file/d/1FmtERCCnyo1Edjp8KBAMWiNVEhHygxC-/view?usp=drive_link). Available starting from Android 8.0 "Oreo".
