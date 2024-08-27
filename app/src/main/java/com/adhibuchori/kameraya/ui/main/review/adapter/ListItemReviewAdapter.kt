@@ -1,7 +1,7 @@
 package com.adhibuchori.kameraya.ui.main.review.adapter
 
 import android.view.View
-import com.adhibuchori.domain.repository.productDetail.ProductReviewModel
+import com.adhibuchori.domain.productDetail.ProductReviewModel
 import com.adhibuchori.kameraya.databinding.ItemRowReviewBinding
 import com.adhibuchori.kameraya.utils.base.list.BaseListAdapter
 import com.bumptech.glide.Glide

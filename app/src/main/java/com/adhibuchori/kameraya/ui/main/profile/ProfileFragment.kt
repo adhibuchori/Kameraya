@@ -1,12 +1,10 @@
 package com.adhibuchori.kameraya.ui.main.profile
 
 import android.app.AlertDialog
-import android.util.Log
-import android.view.ViewGroup
+import android.content.res.ColorStateList
 import android.widget.CompoundButton
-import android.widget.Toast
-import com.adhibuchori.kameraya.ui.auth.preference.dataStore
-import androidx.fragment.app.viewModels
+import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
@@ -14,25 +12,37 @@ import com.adhibuchori.domain.Resource
 import com.adhibuchori.kameraya.R
 import com.adhibuchori.kameraya.databinding.FragmentProfileBinding
 import com.adhibuchori.kameraya.databinding.ItemDialogBoxBinding
-import com.adhibuchori.kameraya.ui.auth.AuthViewModel
-import com.adhibuchori.kameraya.ui.auth.preference.UserPreferences
-import com.adhibuchori.kameraya.ui.auth.preference.UserViewModel
-import com.adhibuchori.kameraya.ui.auth.preference.dataStore
 import com.adhibuchori.kameraya.utils.base.BaseFragment
+import com.adhibuchori.kameraya.utils.extension.createAlertDialog
 import com.adhibuchori.kameraya.utils.extension.gone
+import com.adhibuchori.kameraya.utils.extension.setDialogMargins
+import com.adhibuchori.kameraya.utils.extension.setDialogSize
 import com.adhibuchori.kameraya.utils.extension.visible
-import com.adhibuchori.kameraya.utils.factory.UserViewModelFactory
+import com.adhibuchori.kameraya.utils.firebase.FirebaseConstant
 import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.analytics.FirebaseAnalytics
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class ProfileFragment :
     BaseFragment<FragmentProfileBinding, ViewModel>(FragmentProfileBinding::inflate) {
 
-    private val authViewModel: AuthViewModel by viewModel()
-    private val userViewModel: UserViewModel by viewModels {
-        val pref = UserPreferences.getInstance(requireActivity().application.dataStore)
-        UserViewModelFactory(pref)
+    private val profileViewModel: ProfileViewModel by viewModel()
+
+    private val thumbColorStateList by lazy {
+        ColorStateList(
+            arrayOf(
+                intArrayOf(android.R.attr.state_checked),
+                intArrayOf()
+            ),
+            context?.let {
+                intArrayOf(
+                    ContextCompat.getColor(it, R.color.color_switch_thumb_active),
+                    ContextCompat.getColor(it, R.color.color_switch_thumb_inactive)
+                )
+            }
+        )
     }
 
     override fun initViews() {
@@ -42,57 +52,62 @@ class ProfileFragment :
         setupSwitchListener()
     }
 
+    override fun onResume() {
+        super.onResume()
+        profileViewModel.logScreenView(
+            bundleOf(
+                FirebaseAnalytics.Param.SCREEN_NAME to SCREEN_NAME,
+                FirebaseAnalytics.Param.SCREEN_CLASS to this::class.java.name,
+            )
+        )
+    }
+
     private fun setupNavigation() {
-        binding.btnProfilePageLogout.setOnClickListener { setupAlertDialogListener() }
+        binding.btnProfilePageLogout.setOnClickListener {
+            buttonClickEvent(BUTTON_LOGOUT)
+            setupAlertDialogListener()
+        }
     }
 
     private fun setupAlertDialogListener() {
         val dialogBinding = ItemDialogBoxBinding.inflate(layoutInflater)
+        context?.createAlertDialog(dialogBinding)?.let { dialog ->
+            dialog.show()
+            dialogBinding.setDialogMargins()
+            dialog.setDialogSize()
+            setupDialogUI(dialogBinding, dialog)
+        }
+    }
 
-        val builder = AlertDialog.Builder(requireContext())
-            .setView(dialogBinding.root)
-            .setCancelable(true)
-
-        val dialog = builder.create()
-        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-
-        dialog.show()
-
-        val layoutParams = dialogBinding.root.layoutParams as ViewGroup.MarginLayoutParams
-        val horizontalMarginInDp = 45
-        val horizontalMarginInPx = (horizontalMarginInDp * resources.displayMetrics.density).toInt()
-        layoutParams.marginStart = horizontalMarginInPx
-        layoutParams.marginEnd = horizontalMarginInPx
-        dialogBinding.root.layoutParams = layoutParams
-
-        dialog.window?.setLayout(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT
-        )
-
+    private fun setupDialogUI(dialogBinding: ItemDialogBoxBinding, dialog: AlertDialog) {
         with(dialogBinding) {
             tvItemDialogBoxQuestion.text = getString(R.string.dialog_logout_question)
             ivItemDialogBoxImage.setImageResource(R.drawable.iv_dialog_logout)
-            ivItemDialogCloseIcon.setOnClickListener { dialog.dismiss() }
-
             btnItemDialogBoxNegative.text = getString(R.string.btn_cancel)
             btnItemDialogBoxPositive.text = getString(R.string.btn_logout)
 
-            btnItemDialogBoxNegative.setOnClickListener {
+            ivItemDialogCloseIcon.setOnClickListener {
+                buttonClickEvent(CLOSE_ICON)
                 dialog.dismiss()
             }
+
+            btnItemDialogBoxNegative.setOnClickListener {
+                buttonClickEvent(BUTTON_CANCEL_LOGOUT)
+                dialog.dismiss()
+            }
+
             btnItemDialogBoxPositive.setOnClickListener {
+                buttonClickEvent(BUTTON_PROCEED_LOGOUT)
                 setupLogoutObserver()
                 dialog.dismiss()
             }
         }
-
-        dialog.show()
     }
+
 
     private fun observeUserData() {
         binding.run {
-            authViewModel.run {
+            profileViewModel.run {
                 userName.observe(viewLifecycleOwner) { userName ->
                     tvProfilePageUsernameData.text = userName
                 }
@@ -100,7 +115,6 @@ class ProfileFragment :
                     tvProfilePageEmailData.text = email
                 }
                 userImage.observe(viewLifecycleOwner) { userImage ->
-                    Log.d("userImage at HomeFragment: ", userImage.toString())
                     Glide.with(this@ProfileFragment)
                         .load(userImage)
                         .into(ivProfilePageProfilePicture)
@@ -115,7 +129,7 @@ class ProfileFragment :
                 .setPopUpTo(R.id.nav_graphs, true)
                 .build()
 
-            authViewModel.logout.observe(viewLifecycleOwner) { result ->
+            profileViewModel.logout.observe(viewLifecycleOwner) { result ->
                 when (result) {
                     is Resource.Loading -> {
                         pbProfilePageProgressBar.visible()
@@ -133,28 +147,28 @@ class ProfileFragment :
 
                     is Resource.Error -> {
                         pbProfilePageProgressBar.gone()
-                        Toast.makeText(
-                            requireActivity(),
-                            "Failed to Logout",
-                            Toast.LENGTH_SHORT
+                        Snackbar.make(
+                            binding.root,
+                            "Failed to Logout: ${result.message}",
+                            Snackbar.LENGTH_SHORT
                         ).show()
                     }
 
                     is Resource.HttpError -> {
                         pbProfilePageProgressBar.gone()
-                        Toast.makeText(
-                            requireActivity(),
-                            "HTTP Error",
-                            Toast.LENGTH_SHORT
+                        Snackbar.make(
+                            binding.root,
+                            "HTTP Error: ${result.message}",
+                            Snackbar.LENGTH_SHORT
                         ).show()
                     }
 
                     is Resource.NetworkError -> {
                         pbProfilePageProgressBar.gone()
-                        Toast.makeText(
-                            requireActivity(),
+                        Snackbar.make(
+                            binding.root,
                             "Network Error",
-                            Toast.LENGTH_SHORT
+                            Snackbar.LENGTH_SHORT
                         ).show()
                     }
                 }
@@ -168,24 +182,37 @@ class ProfileFragment :
     }
 
     private fun setupThemeSetting() = with(binding) {
-        userViewModel.getThemeSettings().observe(viewLifecycleOwner) { isDarkModeActive ->
-            sProfilePageTheme.isChecked = isDarkModeActive
-        }
-
-        sProfilePageTheme.setOnCheckedChangeListener { _: CompoundButton?, isChecked: Boolean ->
-            userViewModel.saveThemeSetting(isChecked)
+        sProfilePageTheme.let {
+            it.thumbTintList = thumbColorStateList
+            profileViewModel.theme.observe(viewLifecycleOwner) { isDarkModeActive ->
+                it.isChecked = isDarkModeActive ?: false
+            }
+            it.setOnCheckedChangeListener { _: CompoundButton?, isChecked: Boolean ->
+                profileViewModel.saveThemeSetting(isChecked)
+            }
         }
     }
 
     private fun setupLanguageSetting() = with(binding) {
-        userViewModel.getLanguageSetting()
-            .observe(viewLifecycleOwner) { isLanguageChangeActive ->
-                sProfilePageLanguage.isChecked = isLanguageChangeActive
+        sProfilePageLanguage.let {
+            it.thumbTintList = thumbColorStateList
+            profileViewModel.language.observe(viewLifecycleOwner) { isLanguageChangeActive ->
+                it.isChecked = isLanguageChangeActive ?: false
             }
-
-        sProfilePageLanguage.setOnCheckedChangeListener { _: CompoundButton?, isChecked: Boolean ->
-            userViewModel.saveLanguageSetting(isChecked)
+            it.setOnCheckedChangeListener { _: CompoundButton?, isChecked: Boolean ->
+                profileViewModel.saveLanguageSetting(isChecked)
+            }
         }
+    }
+
+    private fun buttonClickEvent(buttonName: String) {
+        profileViewModel.logButtonEvent(
+            bundleOf(
+                FirebaseConstant.Event.BUTTON_NAME to buttonName,
+                FirebaseConstant.Event.SCREEN_NAME to SCREEN_NAME,
+                FirebaseConstant.Event.EVENT_CATEGORY to EVENT_CATEGORY,
+            )
+        )
     }
 
     private fun setupToolbar() {
@@ -193,5 +220,15 @@ class ProfileFragment :
             tvToolbarTitle.text = getString(R.string.navigation_profile)
             ivToolbarArrowBackIcon.gone()
         }
+    }
+
+    private companion object {
+        const val SCREEN_NAME = "Notification"
+        const val EVENT_CATEGORY = "Profile Fragment"
+
+        const val BUTTON_LOGOUT = "Logout Button Logout"
+        const val BUTTON_PROCEED_LOGOUT = "Button Proceed Logout"
+        const val BUTTON_CANCEL_LOGOUT = "Button Cancel Logout"
+        const val CLOSE_ICON = "Close Icon"
     }
 }

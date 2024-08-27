@@ -370,6 +370,7 @@
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="8dp"
+                android:textColor="@color/color_button_text"
                 android:layout_weight="1"
                 android:fontFamily="@font/plus_jakarta_sans_medium"
                 android:text="@string/btn_add_cart"
@@ -379,11 +380,14 @@
 
     </TableLayout>
 
-    <ProgressBar
+    <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/pb_product_detail_page_progress_bar"
         android:layout_width="wrap_content"
+        android:indeterminate="true"
         android:layout_height="wrap_content"
         android:visibility="gone"
+        app:trackColor="@color/color_primary_light"
+        app:indicatorColor="@color/color_primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

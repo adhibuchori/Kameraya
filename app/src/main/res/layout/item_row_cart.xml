@@ -19,7 +19,6 @@
         android:id="@+id/mcv_row_cart_camera_container"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
         app:cardCornerRadius="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -137,6 +136,7 @@
                         android:id="@+id/iv_cart_page_subtraction_icon"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
+                        app:tint="@color/color_subtraction_icon"
                         android:contentDescription="@string/iv_checkout_page_subtraction_icon_description"
                         android:src="@drawable/ic_subtraction" />
 

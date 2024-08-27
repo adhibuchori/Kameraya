@@ -70,7 +70,6 @@
                 android:id="@+id/rv_bottom_sheet_virtual_account"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
                 android:layout_marginVertical="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -100,7 +99,6 @@
                 android:id="@+id/rv_bottom_sheet_transfer_bank"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
                 android:layout_marginVertical="8dp"
                 app:layout_constraintTop_toBottomOf="@+id/tv_bottom_sheet_transfer_bank" />
 
@@ -128,7 +126,6 @@
                 android:id="@+id/rv_bottom_sheet_instant_payment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
                 android:layout_marginVertical="8dp"
                 app:layout_constraintTop_toBottomOf="@+id/tv_bottom_sheet_instant_payment" />
 
@@ -141,6 +138,7 @@
                 android:layout_marginBottom="30dp"
                 android:text="@string/app_copyright"
                 android:textColor="@color/neutral_20"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rv_bottom_sheet_instant_payment"

@@ -3,14 +3,12 @@ package com.adhibuchori.kameraya.ui.main.wishlist.adapter
 import android.annotation.SuppressLint
 import android.view.View
 import com.adhibuchori.data.utils.mapWishlistItemToCartModel
-import com.adhibuchori.domain.repository.cart.CartModel
-import com.adhibuchori.domain.repository.wishlist.WishlistModel
+import com.adhibuchori.domain.payment.cart.CartModel
+import com.adhibuchori.domain.wishlist.WishlistModel
 import com.adhibuchori.kameraya.databinding.ItemRowWishlistLinearBinding
 import com.adhibuchori.kameraya.utils.base.list.BaseListAdapter
+import com.adhibuchori.kameraya.utils.extension.formatPrice
 import com.bumptech.glide.Glide
-import java.text.DecimalFormat
-import java.text.DecimalFormatSymbols
-import java.util.Locale
 
 class ListItemWishlistAdapter : BaseListAdapter<WishlistModel, ItemRowWishlistLinearBinding>(
     ItemRowWishlistLinearBinding::inflate
@@ -41,7 +39,7 @@ class ListItemWishlistAdapter : BaseListAdapter<WishlistModel, ItemRowWishlistLi
                     .load(data.productImage)
                     .into(sivRowWishlistLinearCameraImage)
 
-                tvRowWishlistLinearCameraPrice.text = formatPrice(data.productPrice)
+                tvRowWishlistLinearCameraPrice.text = data.productPrice.formatPrice()
                 tvRowWishlistLinearCameraStore.text = data.productStore
                 tvRowWishlistLinearCameraReview.text = data.productReview.toString()
                 tvRowWishlistLinearCameraVariant.text = data.productVariant
@@ -60,15 +58,4 @@ class ListItemWishlistAdapter : BaseListAdapter<WishlistModel, ItemRowWishlistLi
                 onClick?.invoke(data)
             }
         }
-
-    private fun formatPrice(productPrice: Int): String {
-        val decimalFormatSymbols = DecimalFormatSymbols(Locale("id", "ID")).apply {
-            currencySymbol = "Rp"
-            groupingSeparator = '.'
-            decimalSeparator = ','
-        }
-
-        val decimalFormat = DecimalFormat("#,###", decimalFormatSymbols)
-        return "Rp${decimalFormat.format(productPrice)}"
-    }
 }

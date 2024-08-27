@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.android.detekt)
     id("kotlin-kapt")
 }
 
@@ -12,7 +13,7 @@ android {
         minSdk = 26
         buildConfigField("String", "API_KEY", "\"6f8856ed-9189-488f-9011-0ff4b6c08edc\"")
 
-        buildConfigField("String", "BASE_URL", "\"https://mymarket.phincon.site\"")
+        buildConfigField("String", "BASE_URL", "\"https://mymarket-api.phincon.site\"")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -74,4 +75,21 @@ dependencies {
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
     kapt(libs.androidx.room.compiler)
+
+    // Firebase BoM
+    api(platform(libs.firebase.bom))
+
+    // Firebase Analytics
+    api(libs.firebase.analytics)
+
+    // Firebase Authentication and Storage
+    api(libs.firebase.auth.ktx)
+    api(libs.firebase.config.ktx)
+
+    // Firebase Crashlytics
+    api(libs.firebase.crashlytics)
+    api(libs.google.firebase.analytics)
+
+    // GSON
+    api(libs.gson)
 }

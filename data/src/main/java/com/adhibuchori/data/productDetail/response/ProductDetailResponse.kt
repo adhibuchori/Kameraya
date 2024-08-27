@@ -27,4 +27,3 @@ data class Data(
     val productPrice: Int? = null,
     val totalReview: Int? = null,
 )
-

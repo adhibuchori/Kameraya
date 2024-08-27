@@ -28,7 +28,8 @@
         android:src="@drawable/ic_arrow_back"
         app:layout_constraintBottom_toBottomOf="@+id/tv_register_page_register"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_register_page_register" />
+        app:layout_constraintTop_toTopOf="@+id/tv_register_page_register"
+        app:tint="@color/neutral_40" />
 
     <TextView
         android:id="@+id/tv_register_page_register_description"
@@ -45,7 +46,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:contentDescription="@string/civ_register_page_add_photo_background_icon_description"
-        app:cardBackgroundColor="@color/neutral_10"
+        app:cardBackgroundColor="@color/color_add_photo_background"
         app:cardCornerRadius="100dp"
         app:layout_constraintBottom_toBottomOf="@+id/iv_register_page_profile_image_placeholder"
         app:layout_constraintEnd_toEndOf="@+id/iv_register_page_profile_image_placeholder"
@@ -168,6 +169,7 @@
         android:layout_marginTop="32dp"
         android:fontFamily="@font/plus_jakarta_sans_medium"
         android:text="@string/register"
+        android:textColor="@color/color_button_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/til_register_page_password"
@@ -199,14 +201,17 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="TextContrastCheck" />
 
-    <ProgressBar
+    <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/pb_register_page_progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:indeterminate="true"
         android:visibility="gone"
+        app:indicatorColor="@color/color_primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:trackColor="@color/color_primary_light" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

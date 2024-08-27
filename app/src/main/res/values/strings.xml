@@ -23,18 +23,26 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="dialog_select_profile_question">Select profile picture from?</string>
-    <string name="btn_camera">Kamera</string>
-    <string name="btn_gallery">Galeri</string>
+    <string name="btn_camera">Camera</string>
+    <string name="btn_gallery">Galery</string>
+    <string name="register_now">Register now</string>
+    <string name="login_now">Login now</string>
 
     <string name="no_account">
         <font>Do not have an account?</font>
-        <font color="#E67E9E"><u>%1$s</u></font>
+        <font><u>%1$s</u></font>
     </string>
 
     <string name="have_account">
         <font>Already have an account?</font>
-        <font color="#E67E9E"><u>%1$s</u></font>
+        <font><u>%1$s</u></font>
     </string>
+
+    <string name="error_username_required">Please enter username first</string>
+    <string name="error_email_required">Please enter email first</string>
+    <string name="error_invalid_email">Invalid email format</string>
+    <string name="error_password_required">Please enter password first</string>
+    <string name="error_password_length">Password must be at least 8 characters long</string>
 
     <!-- Dialog Box -->
     <string name="dialog_question">Dialog Question?</string>
@@ -53,6 +61,7 @@
     <string name="welcome_message">Welcome, %s</string>
     <string name="filter">Filter</string>
     <string name="camera_label">Label</string>
+    <string name="data_reached_end">Data has reached the end</string>
 
     <!-- Item Row Camera Store Linear -->
     <string name="camera_name">Camera Name</string>
@@ -74,6 +83,10 @@
     <string name="notification_info">Notification Info</string>
     <string name="notification_status">Notification Status</string>
     <string name="notification_description">Notification Description</string>
+    <string name="payment_successful">Payment Successful</string>
+    <string name="payment_failed">Payment Failed</string>
+    <string name="payment_successful_description">Payment for your order #%1$s was successful and is being processed.</string>
+    <string name="payment_failed_description">Payment status for your order is not available.</string>
 
     <!-- Cart -->
     <string name="navigation_cart">Cart</string>
@@ -82,6 +95,8 @@
     <string name="total_payment_data">Rp0</string>
     <string name="select_all_product">Select All</string>
     <string name="tv_btn_delete_product">Delete</string>
+    <string name="items_selected">%1$d Item selected</string>
+    <string name="snackbar_select_item">Please select at least one item to checkout.</string>
 
     <!-- Item Row Checkout -->
     <string name="camera_stock_remaining">Remaining %s</string>
@@ -105,12 +120,14 @@
     <string name="wishlist_quantity">%s Item</string>
 
     <!-- Transaction -->
-    <string name="transaction_date"><b>Shopping</b> | %s</string>
+    <string name="transaction_date"><b>Transaction Date</b> | %s</string>
     <string name="transaction_status">Status</string>
     <string name="transaction_quantity">%s Item</string>
-    <string name="transaction_total_title">Total Shopping</string>
+    <string name="transaction_total_title">Total Payment</string>
     <string name="transaction_total">Rp0</string>
     <string name="btn_transaction_review">Review</string>
+    <string name="transaction_completed">Completed</string>
+    <string name="transaction_not_completed">Not Completed</string>
 
     <!-- Review -->
     <string name="user_review_data">User Review Data</string>
@@ -133,13 +150,22 @@
     <string name="camera_rate_and_review_detail">%s rating • %s review</string>
     <string name="satisfied_buyers">%s%% buyers are satisfied</string>
     <string name="see_all">See All</string>
+    <string name="share_product_text">Check out this product: %1$s</string>
+    <string name="share_product_chooser_title">Share product via</string>
+    <string name="wishlist_added">Added to Wishlist</string>
+    <string name="wishlist_removed">Removed from Wishlist</string>
+    <string name="added_to_cart">Added to Cart</string>
+    <string name="snackbar_product_id_missing">Product ID is missing</string>
 
     <!-- Checkout -->
+    <string name="checkout_navigation">Checkout</string>
     <string name="btn_buy">Buy</string>
-    <string name="item_purchased_title">Item Purchased</string>
+    <string name="item_purchased_title">%d Item Type Purchased</string>
     <string name="payment_method_title">Payment Method</string>
     <string name="choose_payment_method">Choose Payment Method</string>
     <string name="checkout_item_quantity">%s Item</string>
+    <string name="unavailable">Unavailable</string>
+    <string name="snackbar_choose_payment_method">Please choose a payment method first.</string>
 
     <!-- Choose Payment Method -->
     <string name="virtual_account_title">Virtual Account</string>
@@ -166,6 +192,21 @@
     <string name="payment_total_title">Total Payment</string>
     <string name="payment_total_data">Total Payment Data</string>
     <string name="btn_done">Done</string>
+    <string name="rating_required">Please provide a rating before proceeding.</string>
+    <string name="review_required">Please provide a review before proceeding.</string>
+    <string name="payment_unavailable">Unavailable</string>
+
+    <!-- State -->
+    <string name="empty_state_title">Oops, Nothing Here!</string>
+    <string name="empty_state_description">Looks like you’ve reached an empty space. Let’s fill it up!</string>
+    <string name="error_state_title">Uh-oh, Something Went Wrong!</string>
+    <string name="error_state_description">Don’t worry, we’re on it. Try again in a bit!</string>
+    <string name="network_error_state_title">Oops, No Internet!</string>
+    <string name="network_error_state_description">The internet seems to be napping. Wake it up and try again!</string>
+    <string name="http_error_state_title">Yikes, Server is Unhappy!</string>
+    <string name="http_error_state_description">Looks like the server is having a bad day. Check back later!</string>
+    <string name="not_found_state_title">Camera not Found!</string>
+    <string name="not_found_state_description">Oops, we can’t find the camera. It must be playing hide and seek!</string>
 
     <!-- Content Description -->
     <string name="iv_splash_page_app_logo_description">Kameraya App Logo</string>
@@ -204,7 +245,7 @@
     <string name="iv_row_wishlist_linear_add_to_cart_icon_description">Add to Cart Icon</string>
     <string name="iv_checkout_page_addition_icon_description">Addition Icon</string>
     <string name="iv_checkout_page_subtraction_icon_description">Subtraction Icon</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="civ_row_notification_icon_placeholder_description">Notification Icon Placeholder</string>
+    <string name="iv_state_image_description">State Image Placeholder</string>
 
 </resources>

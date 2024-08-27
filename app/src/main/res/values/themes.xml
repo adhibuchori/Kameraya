@@ -11,7 +11,7 @@
 
     <!-- Outlined Button Style -->
     <style name="KamerayaOutlinedButtonStyle" parent="Widget.Material3.Button.OutlinedButton">
-        <item name="strokeColor">?attr/colorPrimary</item>
+        <item name="strokeColor">@color/color_button_stroke</item>
         <item name="android:textAppearance">@style/KamerayaTextViewStyle.BodyMedium</item>
     </style>
 
@@ -50,6 +50,12 @@
         <item name="chipStrokeColor">@color/neutral_20</item>
         <item name="chipMinTouchTargetSize">0dp</item>
         <item name="chipBackgroundColor">@android:color/transparent</item>
+    </style>
+
+    <!-- Rating Bar Color -->
+    <style name="RatingBarStyle" parent="Theme.AppCompat">
+        <item name="colorControlActivated">@color/dusky_yellow</item>
+        <item name="colorControlNormal">@color/neutral_30</item>
     </style>
 
     <!-- Text View Style -->

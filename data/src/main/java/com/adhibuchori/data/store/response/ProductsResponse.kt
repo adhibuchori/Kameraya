@@ -8,13 +8,13 @@ data class ProductsResponse(
 	val code: Int? = null,
 
 	@field:SerializedName("data")
-	val data: Data? = null,
+	val productData: ProductData? = null,
 
 	@field:SerializedName("message")
 	val message: String? = null
 )
 
-data class ItemsItem(
+data class ProductItems(
 
 	@field:SerializedName("image")
 	val image: String? = null,
@@ -41,7 +41,7 @@ data class ItemsItem(
 	val productPrice: Int? = null
 )
 
-data class Data(
+data class ProductData(
 
 	@field:SerializedName("pageIndex")
 	val pageIndex: Int? = null,
@@ -56,5 +56,5 @@ data class Data(
 	val totalPages: Int? = null,
 
 	@field:SerializedName("items")
-	val items: List<ItemsItem?>? = null
+	val items: List<ProductItems?>? = null
 )

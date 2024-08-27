@@ -5,9 +5,9 @@ import com.adhibuchori.data.productDetail.source.ProductDetailApiService
 import com.adhibuchori.data.utils.toProductDetailModel
 import com.adhibuchori.data.utils.toProductReviewList
 import com.adhibuchori.domain.Resource
-import com.adhibuchori.domain.repository.productDetail.IProductDetailRepository
-import com.adhibuchori.domain.repository.productDetail.ProductDetailModel
-import com.adhibuchori.domain.repository.productDetail.ProductReviewModel
+import com.adhibuchori.domain.productDetail.IProductDetailRepository
+import com.adhibuchori.domain.productDetail.ProductDetailModel
+import com.adhibuchori.domain.productDetail.ProductReviewModel
 import retrofit2.HttpException
 import java.io.IOException
 

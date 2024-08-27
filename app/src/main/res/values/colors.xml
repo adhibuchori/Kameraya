@@ -2,8 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="green_darker">#3D8757</color>
+    <color name="green_light">#EFFFEF</color>
+    <color name="dusky_yellow">#E1B12C</color>
 
-    <!-- Narumi Color Palette -->
     <color name="color_primary">#E67E9E</color>
     <color name="color_primary_darker">#C96685</color>
     <color name="color_primary_light">#FFEFF4</color>
@@ -11,4 +13,46 @@
     <color name="neutral_30">#707070</color>
     <color name="neutral_20">#D9D9D9</color>
     <color name="neutral_10">#F0F0F0</color>
+
+    <!-- Bottom Nav Color -->
+    <color name="bottom_nav_container">#E67E9E</color>
+
+    <!-- Splash Title -->
+    <color name="color_splash_app_name">@color/color_primary</color>
+
+    <!-- Button -->
+    <color name="color_button_text">@color/white</color>
+    <color name="color_button_stroke">@color/color_primary</color>
+    <color name="color_button_icon">@color/white</color>
+
+    <!-- Authentication -->
+    <color name="color_auth_nav">@color/color_primary</color>
+    <color name="color_add_photo_background">@color/neutral_10</color>
+
+    <!-- Indicator -->
+    <color name="indicator_active">@color/color_primary</color>
+    <color name="indicator_inactive">@color/neutral_20</color>
+
+    <!-- Chip -->
+    <color name="color_chip_background">@color/color_primary_light</color>
+    <color name="color_chip_stroke">@color/color_primary</color>
+    <color name="color_chip_text">@color/color_primary</color>
+
+    <!-- Switch -->
+    <color name="color_switch_thumb_active">@color/white</color>
+    <color name="color_switch_thumb_inactive">@color/neutral_30</color>
+
+    <!-- Set Layout Icon -->
+    <color name="color_set_layout_icon">@color/neutral_40</color>
+
+    <!-- Transaction Status -->
+    <color name="color_transaction_status_text">@color/green_darker</color>
+    <color name="color_transaction_status_container">@color/green_light</color>
+
+    <!-- Subtraction Icon -->
+    <color name="color_subtraction_icon">@color/neutral_30</color>
+
+    <!-- Dialog Box -->
+    <color name="color_dialog_box_container">@color/white</color>
+
 </resources>

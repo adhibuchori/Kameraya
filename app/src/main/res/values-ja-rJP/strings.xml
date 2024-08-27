@@ -25,16 +25,24 @@
     <string name="dialog_select_profile_question">プロフィール写真をどこから選びますか？</string>
     <string name="btn_camera">カメラ</string>
     <string name="btn_gallery">ギャラリー</string>
+    <string name="register_now">今すぐ登録</string>
+    <string name="login_now">今すぐログイン</string>
 
     <string name="no_account">
         <font>アカウントを持っていませんか？</font>
-        <font color="#E67E9E"><u>%1$s</u></font>
+        <font><u>%1$s</u></font>
     </string>
 
     <string name="have_account">
         <font>すでにアカウントを持っていますか？</font>
-        <font color="#E67E9E"><u>%1$s</u></font>
+        <font><u>%1$s</u></font>
     </string>
+
+    <string name="error_username_required">ユーザー名を入力してください</string>
+    <string name="error_email_required">メールアドレスを入力してください</string>
+    <string name="error_invalid_email">無効なメール形式</string>
+    <string name="error_password_required">パスワードを入力してください</string>
+    <string name="error_password_length">パスワードは8文字以上である必要があります</string>
 
     <!-- Dialog Box -->
     <string name="dialog_question">ダイアログの質問は？</string>
@@ -53,6 +61,7 @@
     <string name="welcome_message">ようこそ、%s</string>
     <string name="filter">フィルター</string>
     <string name="camera_label">ラベル</string>
+    <string name="data_reached_end">データが終わりました</string>
 
     <!-- Item Row Camera Store Linear -->
     <string name="camera_name">カメラ名</string>
@@ -74,6 +83,10 @@
     <string name="notification_info">通知情報</string>
     <string name="notification_status">通知ステータス</string>
     <string name="notification_description">通知の説明</string>
+    <string name="payment_successful">支払い成功</string>
+    <string name="payment_failed">支払い失敗</string>
+    <string name="payment_successful_description">注文 #%1$s の支払いが成功し、処理中です。</string>
+    <string name="payment_failed_description">注文の支払い状況は利用できません。</string>
 
     <!-- Cart -->
     <string name="navigation_cart">カート</string>
@@ -82,6 +95,8 @@
     <string name="total_payment_data">Rp0</string>
     <string name="select_all_product">すべて選択</string>
     <string name="tv_btn_delete_product">削除</string>
+    <string name="items_selected">%1$d アイテム選択済み</string>
+    <string name="snackbar_select_item">チェックアウトするには、少なくとも1つのアイテムを選択してください。</string>
 
     <!-- Item Row Checkout -->
     <string name="camera_stock_remaining">残り %s</string>
@@ -105,12 +120,14 @@
     <string name="wishlist_quantity">%s アイテム</string>
 
     <!-- Transaction -->
-    <string name="transaction_date"><b>ショッピング</b> | %s</string>
+    <string name="transaction_date"><b>取引日</b> | %s</string>
     <string name="transaction_status">ステータス</string>
     <string name="transaction_quantity">%s アイテム</string>
-    <string name="transaction_total_title">総ショッピング額</string>
+    <string name="transaction_total_title">総支払額</string>
     <string name="transaction_total">Rp0</string>
     <string name="btn_transaction_review">レビュー</string>
+    <string name="transaction_completed">完了</string>
+    <string name="transaction_not_completed">未完了</string>
 
     <!-- Review -->
     <string name="user_review_data">ユーザーレビューデータ</string>
@@ -133,13 +150,22 @@
     <string name="camera_rate_and_review_detail">%s レビュー • %s コメント</string>
     <string name="satisfied_buyers">%s%% の購入者が満足</string>
     <string name="see_all">すべて見る</string>
+    <string name="share_product_text">この商品をチェックしてください: %1$s</string>
+    <string name="share_product_chooser_title">製品を共有する</string>
+    <string name="wishlist_added">ウィッシュリストに追加しました</string>
+    <string name="wishlist_removed">ウィッシュリストから削除しました</string>
+    <string name="added_to_cart">Added to Cart</string>
+    <string name="snackbar_product_id_missing">Product ID is missing</string>
 
     <!-- Checkout -->
+    <string name="checkout_navigation">チェックアウト</string>
     <string name="btn_buy">購入</string>
-    <string name="item_purchased_title">アイテム購入済み</string>
+    <string name="item_purchased_title">%d 購入したアイテムの種類</string>
     <string name="payment_method_title">支払い方法</string>
     <string name="choose_payment_method">支払い方法を選択</string>
     <string name="checkout_item_quantity">%s 個</string>
+    <string name="unavailable">利用不可</string>
+    <string name="snackbar_choose_payment_method">まず支払い方法を選択してください。</string>
 
     <!-- Choose Payment Method -->
     <string name="virtual_account_title">仮想口座</string>
@@ -166,6 +192,21 @@
     <string name="payment_total_title">合計支払い額</string>
     <string name="payment_total_data">合計支払い額データ</string>
     <string name="btn_done">完了</string>
+    <string name="rating_required">評価を提供してから進んでください。</string>
+    <string name="review_required">レビューを提供してから進んでください。</string>
+    <string name="payment_unavailable">利用不可</string>
+
+    <!-- State -->
+    <string name="empty_state_title">おっと、ここには何もない！</string>
+    <string name="empty_state_description">空っぽのスペースに到達したようです。何か入れましょう！</string>
+    <string name="error_state_title">あらら、何か問題が起きました！</string>
+    <string name="error_state_description">心配しないでください、対応中です。もう一度試してみてください！</string>
+    <string name="network_error_state_title">おっと、インターネットがない！</string>
+    <string name="network_error_state_description">インターネットが昼寝しているようです。起こして、もう一度試してみて！</string>
+    <string name="http_error_state_title">うわー、サーバーがご機嫌ななめ！</string>
+    <string name="http_error_state_description">サーバーが調子悪そうです。後でまた試してみてください！</string>
+    <string name="not_found_state_title">カメラが見つかりません！</string>
+    <string name="not_found_state_description">おっと、カメラが見つかりません。隠れんぼ中かな？</string>
 
     <!-- Content Description -->
     <string name="iv_splash_page_app_logo_description">カメラヤアプリのロゴ</string>
@@ -204,5 +245,7 @@
     <string name="iv_row_wishlist_linear_add_to_cart_icon_description">カートに追加アイコン</string>
     <string name="iv_checkout_page_addition_icon_description">追加アイコン</string>
     <string name="iv_checkout_page_subtraction_icon_description">減算アイコン</string>
+    <string name="civ_row_notification_icon_placeholder_description">通知アイコンのプレースホルダー</string>
+    <string name="iv_state_image_description">状態の画像プレースホルダー</string>
 
 </resources>

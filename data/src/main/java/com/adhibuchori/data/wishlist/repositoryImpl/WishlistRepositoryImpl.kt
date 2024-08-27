@@ -4,8 +4,8 @@ import com.adhibuchori.data.utils.toWishlistEntity
 import com.adhibuchori.data.utils.toWishlistProductList
 import com.adhibuchori.data.utils.toWishlistModel
 import com.adhibuchori.data.wishlist.dao.WishlistDao
-import com.adhibuchori.domain.repository.wishlist.IWishlistRepository
-import com.adhibuchori.domain.repository.wishlist.WishlistModel
+import com.adhibuchori.domain.wishlist.IWishlistRepository
+import com.adhibuchori.domain.wishlist.WishlistModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

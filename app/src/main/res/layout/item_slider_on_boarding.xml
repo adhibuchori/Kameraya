@@ -9,12 +9,12 @@
         android:id="@+id/iv_slider_on_boarding"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
         android:contentDescription="@string/iv_slider_on_boarding_description"
         android:src="@drawable/iv_first_onboarding"
-        app:layout_constraintBottom_toTopOf="@+id/tv_slider_on_boarding_title"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ImageContrastCheck" />
 
     <TextView
@@ -23,13 +23,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="20dp"
         android:fontFamily="@font/plus_jakarta_sans_extra_bold"
         android:text="@string/first_on_boarding_title"
         android:textColor="@color/neutral_40"
-        app:layout_constraintBottom_toTopOf="@+id/tv_slider_on_boarding_description"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_slider_on_boarding" />
 
     <TextView
         android:id="@+id/tv_slider_on_boarding_description"
@@ -37,11 +38,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
         android:lineSpacingMultiplier="1.5"
         android:text="@string/first_on_boarding_description"
         android:textColor="@color/neutral_30"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_slider_on_boarding_title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

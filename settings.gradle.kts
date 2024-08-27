@@ -21,6 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Kameraya"
 include(":app")
-include(":di")
 include(":domain")
 include(":data")

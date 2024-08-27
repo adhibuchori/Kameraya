@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_transaction"
-        android:name="com.adhibuchori.kameraya.ui.main.transaction.transaction.TransactionFragment"
+        android:name="com.adhibuchori.kameraya.ui.main.payment.transaction.TransactionFragment"
         android:label="fragment_history"
         tools:layout="@layout/fragment_transaction" />
 

@@ -1,6 +1,8 @@
 package com.adhibuchori.kameraya.ui.main.productDetail
 
+import android.content.Intent
 import android.content.res.ColorStateList
+import android.os.Bundle
 import android.util.Log
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.ImageView
@@ -8,39 +10,39 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
-import com.adhibuchori.data.utils.mapProductDetailToWishlistModel
 import com.adhibuchori.domain.Resource
-import com.adhibuchori.domain.repository.productDetail.ProductDetailModel
-import com.adhibuchori.domain.repository.productDetail.ProductVariant
+import com.adhibuchori.domain.payment.checkout.CheckoutItem
+import com.adhibuchori.domain.productDetail.ProductDetailModel
+import com.adhibuchori.domain.productDetail.ProductVariant
 import com.adhibuchori.kameraya.R
 import com.adhibuchori.kameraya.databinding.FragmentProductDetailBinding
 import com.adhibuchori.kameraya.ui.main.productDetail.adapter.ItemSliderProductDetailAdapter
-import com.adhibuchori.kameraya.ui.main.wishlist.WishlistViewModel
 import com.adhibuchori.kameraya.utils.base.BaseFragment
+import com.adhibuchori.kameraya.utils.extension.formatPrice
 import com.adhibuchori.kameraya.utils.extension.gone
 import com.adhibuchori.kameraya.utils.extension.orZero
 import com.adhibuchori.kameraya.utils.extension.visible
+import com.adhibuchori.kameraya.utils.firebase.FirebaseConstant
 import com.adhibuchori.kameraya.utils.launchAndCollectIn
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.analytics.FirebaseAnalytics
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.text.DecimalFormat
-import java.text.DecimalFormatSymbols
-import java.util.Locale
 
 class ProductDetailFragment :
     BaseFragment<FragmentProductDetailBinding, ViewModel>(FragmentProductDetailBinding::inflate) {
 
     private val productDetailViewModel: ProductDetailViewModel by viewModel()
-    private val wishlistViewModel: WishlistViewModel by viewModel()
 
     private var productDetail: ProductDetailModel? = null
     private val args: ProductDetailFragmentArgs by navArgs()
@@ -50,6 +52,16 @@ class ProductDetailFragment :
         setupToolbar()
         observeProductDetailData()
         observeWishlistState()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        productDetailViewModel.logScreenView(
+            bundleOf(
+                FirebaseAnalytics.Param.SCREEN_NAME to SCREEN_NAME,
+                FirebaseAnalytics.Param.SCREEN_CLASS to this::class.java.name,
+            )
+        )
     }
 
     private fun observeWishlistState() {
@@ -112,12 +124,18 @@ class ProductDetailFragment :
                                 ).show()
                             }
 
+                            else -> {
+                                Log.e("ProductDetailFragment", "Unexpected result type: $resource")
+                            }
                         }
-
                     }
                 }
             } else {
-                Snackbar.make(binding.root, "Product ID is missing", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(
+                    binding.root,
+                    getString(R.string.snackbar_product_id_missing),
+                    Snackbar.LENGTH_SHORT
+                ).show()
             }
         }
     }
@@ -126,13 +144,10 @@ class ProductDetailFragment :
         setupViewPagerProductImageSliderSize()
         setupProductImageSlider(productDetail?.image.orEmpty())
         setupIndicators(productDetail?.image.orEmpty())
-        setCurrentIndicator(0)
 
         tvProductDetailPageProductPrice.text =
             productDetail?.productVariant?.getOrNull(0)?.variantPrice.let {
-                formatProductPrice(
-                    it?.plus(productDetail?.productPrice.orZero())
-                )
+                it?.plus(productDetail?.productPrice.orZero()).formatPrice()
             }
         tvProductDetailPageProductName.text = productDetail?.productName
         tvProductDetailPageProductSold.text = productDetail?.sale?.toString()
@@ -175,17 +190,18 @@ class ProductDetailFragment :
 
                 setOnCheckedChangeListener { _, isChecked ->
                     if (isChecked) {
-                        setChipBackgroundColorResource(R.color.color_primary_light)
+                        setChipBackgroundColorResource(R.color.color_chip_background)
                         chipStrokeColor = ColorStateList.valueOf(
                             ContextCompat.getColor(
                                 context,
-                                R.color.color_primary
+                                R.color.color_chip_stroke
                             )
                         )
-                        setTextColor(ContextCompat.getColor(context, R.color.color_primary))
+                        setTextColor(ContextCompat.getColor(context, R.color.color_chip_text))
                         isClickable = false
                         binding.tvProductDetailPageProductPrice.text =
-                            formatProductPrice(variant.variantPrice.plus(productDetail?.productPrice.orZero()))
+                            variant.variantPrice.plus(productDetail?.productPrice.orZero())
+                                .formatPrice()
                     } else {
                         setChipBackgroundColorResource(android.R.color.transparent)
                         chipStrokeColor = ColorStateList.valueOf(
@@ -204,30 +220,21 @@ class ProductDetailFragment :
                 isChecked = index == 0
 
                 if (isChecked) {
-                    setChipBackgroundColorResource(R.color.color_primary_light)
+                    setChipBackgroundColorResource(R.color.color_chip_background)
                     chipStrokeColor = ColorStateList.valueOf(
                         ContextCompat.getColor(
                             context,
-                            R.color.color_primary
+                            R.color.color_chip_stroke
                         )
                     )
-                    setTextColor(ContextCompat.getColor(context, R.color.color_primary))
+                    setTextColor(ContextCompat.getColor(context, R.color.color_chip_text))
                     binding.tvProductDetailPageProductPrice.text =
-                        formatProductPrice(variant.variantPrice.plus(productDetail?.productPrice.orZero()))
+                        variant.variantPrice.plus(productDetail?.productPrice.orZero())
+                            .formatPrice()
                 }
             }
             chipGroup.addView(chip)
         }
-    }
-
-    private fun formatProductPrice(price: Int?): String {
-        val decimalFormatSymbols = DecimalFormatSymbols(Locale("id", "ID")).apply {
-            currencySymbol = "Rp"
-            groupingSeparator = '.'
-            decimalSeparator = ','
-        }
-        val decimalFormat = DecimalFormat("#,###", decimalFormatSymbols)
-        return "Rp${price?.let { decimalFormat.format(it) } ?: "0"}"
     }
 
     private fun setupViewPagerProductImageSliderSize() {
@@ -249,7 +256,7 @@ class ProductDetailFragment :
                 ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
-                    setCurrentIndicator(position)
+                    setCurrentIndicator(position, imageUrl.size)
                 }
             })
 
@@ -258,45 +265,50 @@ class ProductDetailFragment :
     }
 
     private fun setupIndicators(imageUrl: List<String>) {
-        val productImageSlides = ItemSliderProductDetailAdapter().apply { submitList(imageUrl) }
-
-        val indicators = arrayOfNulls<ImageView>(productImageSlides.itemCount)
-        val layoutParams: LinearLayout.LayoutParams =
-            LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
-        layoutParams.setMargins(16, 0, 16, 0)
-        for (i in indicators.indices) {
-            indicators[i] = ImageView(requireContext())
-            indicators[i].apply {
-                this?.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.indicator_inactive
+        binding.run {
+            vProductDetailPageIndicatorsContainer.removeAllViews()
+            val indicators = arrayOfNulls<ImageView>(imageUrl.size)
+            val layoutParams: LinearLayout.LayoutParams =
+                LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
+            layoutParams.setMargins(16, 0, 16, 0)
+            for (i in indicators.indices) {
+                indicators[i] = ImageView(context)
+                indicators[i].apply {
+                    this?.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            context,
+                            R.drawable.indicator_inactive
+                        )
                     )
-                )
-                this?.layoutParams = layoutParams
+                    this?.layoutParams = layoutParams
+                }
+                vProductDetailPageIndicatorsContainer.addView(indicators[i])
             }
-            binding.vProductDetailPageIndicatorsContainer.addView(indicators[i])
         }
+        setCurrentIndicator(0, imageUrl.size)
     }
 
-    private fun setCurrentIndicator(index: Int) {
-        val childCount = binding.vProductDetailPageIndicatorsContainer.childCount
-        for (i in 0 until childCount) {
+    private fun setCurrentIndicator(index: Int, itemCount: Int) {
+        for (i in 0 until itemCount) {
             val imageView = binding.vProductDetailPageIndicatorsContainer.getChildAt(i) as ImageView
             if (i == index) {
-                imageView.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.indicator_active
+                context?.let { context ->
+                    imageView.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            context,
+                            R.drawable.indicator_active
+                        )
                     )
-                )
+                }
             } else {
-                imageView.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.indicator_inactive
+                context?.let { context ->
+                    imageView.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            context,
+                            R.drawable.indicator_inactive
+                        )
                     )
-                )
+                }
             }
         }
     }
@@ -304,6 +316,7 @@ class ProductDetailFragment :
     private fun setupToolbar() {
         with(binding.productDetailPageToolbar) {
             ivToolbarArrowBackIcon.setOnClickListener {
+                buttonClickEvent(ARROW_BACK_ICON)
                 val navController = Navigation.findNavController(it)
                 navController.navigateUp()
             }
@@ -314,21 +327,55 @@ class ProductDetailFragment :
     private fun setupNavigation() {
         with(binding) {
             tvProductDetailPageSeeAll.setOnClickListener {
+                buttonClickEvent(REVIEW_NAVIGATION)
                 val productId = args.productId
                 val action =
                     ProductDetailFragmentDirections.actionProductDetailFragmentToReviewFragment(
                         productId
                     )
-                Navigation.findNavController(requireActivity(), R.id.fcv_container)
-                    .navigate(action)
+                activity?.let { activity ->
+                    Navigation.findNavController(activity, R.id.fcv_container)
+                        .navigate(action)
+                }
             }
             btnProductDetailPageBuyNow.setOnClickListener {
-                Navigation.findNavController(requireActivity(), R.id.fcv_container)
-                    .navigate(R.id.action_productDetailFragment_to_checkoutFragment)
-                // TODO: Add checkout functionality.
+                buttonClickEvent(BUTTON_BUY_NOW)
+                val selectedProduct = productDetail?.let { productDetailData ->
+                    listOf(
+                        productDetailViewModel.mapProductDetailToCart(
+                            productDetailData,
+                            getSelectedChipVariant()
+                        )
+                    )
+                }
+
+                val checkoutItem = CheckoutItem(cartItems = selectedProduct)
+                val bundle = Bundle().apply {
+                    putParcelable(CHECKOUT_ITEM, checkoutItem)
+                }
+
+                findNavController().navigate(
+                    R.id.action_productDetailFragment_to_checkoutFragment,
+                    bundle
+                )
             }
             ivProductDetailPageShareIcon.setOnClickListener {
-                // TODO: Input share feature here.
+                buttonClickEvent(SHARE_ICON)
+                val productId = args.productId
+                val deepLinkUrl = "https://kameraya.link/products/$productId"
+
+                val shareIntent = Intent().apply {
+                    action = Intent.ACTION_SEND
+                    putExtra(Intent.EXTRA_TEXT, getString(R.string.share_product_text, deepLinkUrl))
+                    type = "text/plain"
+                }
+
+                startActivity(
+                    Intent.createChooser(
+                        shareIntent,
+                        getString(R.string.share_product_chooser_title)
+                    )
+                )
             }
         }
     }
@@ -336,15 +383,23 @@ class ProductDetailFragment :
     private fun setupWishlistFeature() {
         binding.ivProductDetailPageFavoriteIcon.run {
             setOnClickListener {
+                buttonClickEvent(FAVORITE_ICON)
                 productDetailViewModel.handleWishlistItem(
                     productDetail,
                     getSelectedChipVariant(),
                     onHandle = { status ->
                         if (status) {
-                            Toast.makeText(context, "Added to Wishlist", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                context,
+                                getString(R.string.wishlist_added),
+                                Toast.LENGTH_SHORT
+                            ).show()
                         } else {
-                            Toast.makeText(context, "Removed from Wishlist", Toast.LENGTH_SHORT)
-                                .show()
+                            Toast.makeText(
+                                context,
+                                getString(R.string.wishlist_removed),
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     })
             }
@@ -354,8 +409,10 @@ class ProductDetailFragment :
     private fun setupAddCartFeature() {
         binding.btnProductDetailPageAddCart.run {
             setOnClickListener {
+                buttonClickEvent(BUTTON_ADD_TO_CART)
                 productDetailViewModel.addProductToCart(productDetail, getSelectedChipVariant())
-                Toast.makeText(context, "Added to Cart", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.added_to_cart), Toast.LENGTH_SHORT)
+                    .show()
             }
         }
     }
@@ -366,5 +423,29 @@ class ProductDetailFragment :
             productDetail?.productVariant?.find { it.variantName.hashCode() == selectedVariant }
 
         return selected
+    }
+
+    private fun buttonClickEvent(buttonName: String) {
+        productDetailViewModel.logButtonEvent(
+            bundleOf(
+                FirebaseConstant.Event.BUTTON_NAME to buttonName,
+                FirebaseConstant.Event.SCREEN_NAME to SCREEN_NAME,
+                FirebaseConstant.Event.EVENT_CATEGORY to EVENT_CATEGORY,
+            )
+        )
+    }
+
+    private companion object {
+        const val CHECKOUT_ITEM = "checkoutItem"
+
+        const val SCREEN_NAME = "Product Detail"
+        const val EVENT_CATEGORY = "Product Detail Fragment"
+
+        const val BUTTON_ADD_TO_CART = "Button Add to Cart"
+        const val BUTTON_BUY_NOW = "Button Buy Now"
+        const val SHARE_ICON = "Share Icon"
+        const val FAVORITE_ICON = "Favorite Icon"
+        const val REVIEW_NAVIGATION = "Review Navigation"
+        const val ARROW_BACK_ICON = "Arrow Back Icon"
     }
 }

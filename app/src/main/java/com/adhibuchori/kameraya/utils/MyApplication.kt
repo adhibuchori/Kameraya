@@ -1,10 +1,10 @@
 package com.adhibuchori.kameraya.utils
 
 import android.app.Application
-import com.adhibuchori.data.utils.module.databaseModule
-import com.adhibuchori.di.appModule
-import com.adhibuchori.di.networkModule
-import com.adhibuchori.kameraya.utils.module.viewModel
+import com.adhibuchori.data.di.databaseModule
+import com.adhibuchori.data.di.repositoryModule
+import com.adhibuchori.data.di.networkModule
+import com.adhibuchori.kameraya.utils.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -16,7 +16,7 @@ class MyApplication : Application() {
         startKoin {
             androidLogger(level = Level.NONE)
             androidContext(this@MyApplication)
-            modules(appModule, viewModel, networkModule, databaseModule)
+            modules(repositoryModule, viewModelModule, networkModule, databaseModule)
         }
     }
 }

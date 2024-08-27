@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "251376322112",
+    "project_id": "kameraya-fcc00",
+    "storage_bucket": "kameraya-fcc00.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:251376322112:android:512a53b2d79211a6c481a5",
+        "android_client_info": {
+          "package_name": "com.adhibuchori.kameraya"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSTxU25Hvy40EpngPT8KsSVBhh1egTP5E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

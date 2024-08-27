@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            app:cardBackgroundColor="@color/color_primary_light"
+            app:cardBackgroundColor="@color/color_transaction_status_container"
             app:cardCornerRadius="100dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -57,7 +57,7 @@
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="5dp"
                 android:text="@string/transaction_status"
-                android:textColor="@color/color_primary"
+                android:textColor="@color/color_transaction_status_text"
                 android:textSize="10sp"
                 tools:ignore="SmallSp,TextContrastCheck" />
 
@@ -76,8 +76,9 @@
             android:id="@+id/siv_row_transaction_camera_image"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/white"
             android:src="@drawable/iv_placeholder"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/md_row_transaction_divider"
@@ -90,6 +91,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:fontFamily="@font/plus_jakarta_sans_medium"
             android:text="@string/camera_name"
             android:textColor="@color/neutral_40"
@@ -123,7 +125,8 @@
             android:textColor="@color/neutral_30"
             android:textSize="10sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/siv_row_transaction_camera_image" />
+            app:layout_constraintTop_toBottomOf="@+id/siv_row_transaction_camera_image"
+            tools:ignore="SmallSp" />
 
         <TextView
             android:id="@+id/tv_row_transaction_transaction_total"
@@ -132,8 +135,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
             android:fontFamily="@font/plus_jakarta_sans_semi_bold"
             android:text="@string/transaction_total"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_row_transaction_transaction_total_title" />
 
@@ -146,10 +151,11 @@
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/plus_jakarta_sans_medium"
             android:text="@string/btn_transaction_review"
+            android:textColor="@color/color_button_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv_row_transaction_transaction_total_title"
-            tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck,VisualLintButtonSize" />
+            tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck,VisualLintButtonSize,TouchTargetSizeCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

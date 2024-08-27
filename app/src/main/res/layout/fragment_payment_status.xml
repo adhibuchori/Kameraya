@@ -70,10 +70,11 @@
                         android:id="@+id/rb_payment_status_page_payment_rate"
                         style="@style/Widget.AppCompat.RatingBar.Indicator"
                         android:layout_width="wrap_content"
-                        android:isIndicator="false"
-                        android:stepSize="0.5"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:isIndicator="false"
+                        android:stepSize="1"
+                        android:theme="@style/RatingBarStyle"
                         app:layout_constraintStart_toStartOf="@+id/tv_payment_status_page_payment_rate"
                         app:layout_constraintTop_toBottomOf="@+id/tv_payment_status_page_payment_rate" />
 
@@ -103,7 +104,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/tv_payment_status_page_payment_review">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/tiet_login_page_email"
+                            android:id="@+id/tiet_payment_status_page_review"
                             style="@style/KamerayaTextViewStyle.BodyMedium"
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
@@ -178,11 +179,13 @@
                     <TextView
                         android:id="@+id/tv_payment_status_page_payment_id_data"
                         style="@style/KamerayaTextViewStyle.BodySmall"
-                        android:layout_width="wrap_content"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:ellipsize="end"
                         android:fontFamily="@font/plus_jakarta_sans_semi_bold"
                         android:gravity="end"
+                        android:maxLines="1"
                         android:text="@string/payment_id_data"
                         android:textColor="@color/neutral_40" />
 
@@ -323,6 +326,7 @@
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/plus_jakarta_sans_medium"
         android:text="@string/btn_done"
+        android:textColor="@color/color_button_text"
         app:layout_constraintBottom_toTopOf="@+id/tv_payment_status_page_copyright"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

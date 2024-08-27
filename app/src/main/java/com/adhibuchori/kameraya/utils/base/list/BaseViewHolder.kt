@@ -10,6 +10,7 @@ class BaseViewHolder<T : Any, VB : ViewBinding>(
     private val onItemBind: (T, VB, View, Int) -> Unit
 ) : RecyclerView.ViewHolder(view) {
     fun bind(item: T) {
+        @Suppress("DEPRECATION")
         onItemBind(item, binding, itemView, adapterPosition)
     }
 }

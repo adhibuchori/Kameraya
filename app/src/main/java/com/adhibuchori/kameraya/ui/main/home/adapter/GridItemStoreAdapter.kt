@@ -1,18 +1,16 @@
 package com.adhibuchori.kameraya.ui.main.home.adapter
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.view.View
-import com.adhibuchori.domain.repository.store.ProductsModel
-import com.adhibuchori.kameraya.R
+import androidx.constraintlayout.widget.ConstraintLayout
+import com.adhibuchori.domain.store.ProductsModel
 import com.adhibuchori.kameraya.databinding.ItemRowCameraStoreGridBinding
-import com.adhibuchori.kameraya.utils.base.list.BaseListAdapter
+import com.adhibuchori.kameraya.utils.base.paging.BasePagingAdapter
+import com.adhibuchori.kameraya.utils.extension.formatPrice
+import com.adhibuchori.kameraya.utils.extension.formatRating
 import com.bumptech.glide.Glide
-import java.text.DecimalFormat
-import java.text.DecimalFormatSymbols
-import java.util.Locale
 
-class GridItemStoreAdapter : BaseListAdapter<ProductsModel, ItemRowCameraStoreGridBinding>(
+class GridItemStoreAdapter : BasePagingAdapter<ProductsModel, ItemRowCameraStoreGridBinding>(
     ItemRowCameraStoreGridBinding::inflate
 ) {
     private var onClick: ((ProductsModel) -> Unit)? = null
@@ -25,38 +23,24 @@ class GridItemStoreAdapter : BaseListAdapter<ProductsModel, ItemRowCameraStoreGr
     override fun onItemBind(): (ProductsModel, ItemRowCameraStoreGridBinding, View, Int) -> Unit =
         { data, binding, view, _ ->
             with(binding) {
-                Glide.with(binding.root.context)
-                    .load(data.image)
-                    .into(sivRowCameraStoreGridCameraImage)
+                sivRowCameraStoreGridCameraImage.run {
+                    Glide.with(context)
+                        .load(data.image)
+                        .into(this)
+                    post {
+                        val lp = layoutParams as ConstraintLayout.LayoutParams
+                        lp.height = measuredWidth
+                        layoutParams = lp
+                        requestLayout()
+                    }
+                }
 
                 tvRowCameraStoreGridCameraName.text = data.productName
-                tvRowCameraStoreGridCameraPrice.text = formatPrice(data.productPrice)
+                tvRowCameraStoreGridCameraPrice.text = data.productPrice.formatPrice()
                 tvRowCameraStoreGridCameraStore.text = data.store
-                tvRowWishlistGridCameraReview.text = formatRating(
-                    root.context,
-                    data.productRating,
-                    data.sale
-                )
+                tvRowWishlistGridCameraReview.text =
+                    data.productRating.formatRating(root.context, data.sale)
             }
             view.setOnClickListener { onClick?.invoke(data) }
         }
-
-    private fun formatRating(context: Context, productRating: Float?, sale: Float?): String {
-        return String.format(
-            context.getString(R.string.camera_review),
-            productRating.toString(),
-            sale.toString()
-        )
-    }
-
-    private fun formatPrice(productPrice: Float?): String {
-        val decimalFormatSymbols = DecimalFormatSymbols(Locale("id", "ID")).apply {
-            currencySymbol = "Rp"
-            groupingSeparator = '.'
-            decimalSeparator = ','
-        }
-
-        val decimalFormat = DecimalFormat("#,###", decimalFormatSymbols)
-        return "Rp${decimalFormat.format(productPrice)}"
-    }
 }

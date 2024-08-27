@@ -1,27 +1,35 @@
 package com.adhibuchori.kameraya
 
+import android.Manifest
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContextCompat
 import androidx.core.os.LocaleListCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.adhibuchori.kameraya.databinding.ActivityMainBinding
-import com.adhibuchori.kameraya.ui.auth.preference.UserPreferences
-import com.adhibuchori.kameraya.ui.auth.preference.UserViewModel
-import com.adhibuchori.kameraya.ui.auth.preference.dataStore
-import com.adhibuchori.kameraya.utils.factory.UserViewModelFactory
+import com.adhibuchori.kameraya.ui.main.profile.ProfileViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private val profileViewModel: ProfileViewModel by viewModel()
 
-    private val userViewModel: UserViewModel by viewModels {
-        val pref = UserPreferences.getInstance(application.dataStore)
-        UserViewModelFactory(pref)
+    private val requiredPermissions = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        arrayOf(
+            Manifest.permission.POST_NOTIFICATIONS,
+        )
+    } else {
+        arrayOf()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,21 +51,48 @@ class MainActivity : AppCompatActivity() {
     private fun initViews() {
         applyThemeFromDataStore()
         applyLanguageFromDataStore()
+        if (arePermissionGranted().not()) {
+            requestPermissions()
+        }
+    }
+
+    private val requestPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()
+    ) { permission ->
+        val deniedPermission = permission.filterValues { !it }.keys
+        if (deniedPermission.isNotEmpty()) {
+            Toast.makeText(this, "Permission denied: $deniedPermission", Toast.LENGTH_SHORT)
+        }
+    }
+
+    private fun arePermissionGranted(): Boolean {
+        for (permission in requiredPermissions) {
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    permission
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                return false
+            }
+        }
+        return true
+    }
+
+    private fun requestPermissions() {
+        requestPermissionLauncher.launch(requiredPermissions)
     }
 
     private fun applyThemeFromDataStore() {
-        userViewModel.getThemeSettings().observe(this) { isDarkModeActive: Boolean ->
-            if (isDarkModeActive) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            } else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            }
+        profileViewModel.theme.observe(this) { isDarkModeActive ->
+            AppCompatDelegate.setDefaultNightMode(
+                if (isDarkModeActive == true) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
+            )
         }
     }
 
     private fun applyLanguageFromDataStore() {
-        userViewModel.getLanguageSetting().observe(this) { isLanguageChangeActive: Boolean ->
-            val newLocale = if (isLanguageChangeActive) Locale("ja") else Locale.ENGLISH
+        profileViewModel.language.observe(this) { isLanguageChangeActive ->
+            val newLocale = if (isLanguageChangeActive == true) Locale("ja") else Locale.ENGLISH
             val localeList = LocaleListCompat.create(newLocale)
             AppCompatDelegate.setApplicationLocales(localeList)
         }

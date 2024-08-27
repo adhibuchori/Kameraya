@@ -1,19 +1,25 @@
 package com.adhibuchori.kameraya.ui.auth
 
+import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.adhibuchori.domain.repository.IAuthRepository
+import com.adhibuchori.domain.auth.IAuthRepository
 import kotlinx.coroutines.launch
 import com.adhibuchori.domain.Resource
-import kotlinx.coroutines.async
+import com.adhibuchori.domain.firebaseAnalytics.IFirebaseAnalyticsRepository
+import com.adhibuchori.kameraya.utils.firebase.FirebaseConstant
+import com.google.firebase.analytics.FirebaseAnalytics
 import kotlinx.coroutines.runBlocking
 import java.io.File
 
-class AuthViewModel(private val authRepository: IAuthRepository) : ViewModel() {
+class AuthViewModel(
+    private val authRepository: IAuthRepository,
+    private val firebaseAnalytics: IFirebaseAnalyticsRepository,
+) : ViewModel() {
 
     private val _loginResult = MutableLiveData<Resource<Boolean>>()
     val loginResult: LiveData<Resource<Boolean>> = _loginResult
@@ -33,12 +39,8 @@ class AuthViewModel(private val authRepository: IAuthRepository) : ViewModel() {
         authRepository.setUserImage().asLiveData()
     }
 
-    val email: LiveData<String?> = runBlocking {
-        authRepository.setEmail().asLiveData()
-    }
-
-    val logout: LiveData<Resource<String?>> = runBlocking {
-        authRepository.logout().asLiveData()
+    val onBoardingShown: LiveData<Boolean?> = runBlocking {
+        authRepository.readOnBoardingShown().asLiveData()
     }
 
     fun login(email: String, password: String) {
@@ -62,5 +64,19 @@ class AuthViewModel(private val authRepository: IAuthRepository) : ViewModel() {
                 Log.e("AuthViewModel", "Error during registration: ${e.localizedMessage}")
             }
         }
+    }
+
+    fun saveOnBoardingShown(isShown: Boolean) {
+        viewModelScope.launch {
+            authRepository.saveOnBoardingShown(isShown)
+        }
+    }
+
+    fun logScreenView(bundle: Bundle) {
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle)
+    }
+
+    fun logButtonEvent(bundle: Bundle) {
+        firebaseAnalytics.logEvent(FirebaseConstant.Event.BUTTON_CLICK, bundle)
     }
 }

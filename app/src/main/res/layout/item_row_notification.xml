@@ -3,18 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_marginVertical="8dp">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/civ_row_notification_icon_placeholder"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcv_row_notification_icon_placeholder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:src="@drawable/iv_placeholder"
+        app:cardCornerRadius="100dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ImageContrastCheck" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/civ_row_notification_icon_placeholder"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="@string/civ_row_notification_icon_placeholder_description"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_success"
+            app:tint="@color/color_primary"
+            tools:ignore="ImageContrastCheck" />
+
+    </com.google.android.material.card.MaterialCardView>
 
     <TextView
         android:id="@+id/tv_row_notification_info"
@@ -26,8 +37,8 @@
         android:text="@string/notification_info"
         android:textColor="@color/neutral_30"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/civ_row_notification_icon_placeholder"
-        app:layout_constraintTop_toTopOf="@+id/civ_row_notification_icon_placeholder" />
+        app:layout_constraintStart_toEndOf="@+id/mcv_row_notification_icon_placeholder"
+        app:layout_constraintTop_toTopOf="@+id/mcv_row_notification_icon_placeholder" />
 
     <TextView
         android:id="@+id/tv_row_notification_status"
@@ -35,12 +46,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/plus_jakarta_sans_semi_bold"
         android:text="@string/notification_status"
-        app:layout_constraintBottom_toBottomOf="@+id/civ_row_notification_icon_placeholder"
+        app:layout_constraintBottom_toBottomOf="@+id/mcv_row_notification_icon_placeholder"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/civ_row_notification_icon_placeholder"
+        app:layout_constraintStart_toEndOf="@+id/mcv_row_notification_icon_placeholder"
         app:layout_constraintTop_toBottomOf="@+id/tv_row_notification_info" />
 
     <TextView
@@ -49,10 +61,11 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="10dp"
+        android:lineSpacingMultiplier="1.5"
         android:text="@string/notification_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/civ_row_notification_icon_placeholder" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_row_notification_status" />
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/md_row_notification_divider"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    app:cardBackgroundColor="@color/white"
+    app:cardBackgroundColor="@color/color_dialog_box_container"
     app:strokeColor="@android:color/transparent">
 
     <LinearLayout
@@ -54,7 +54,7 @@
             <Button
                 android:id="@+id/btn_item_dialog_box_negative"
                 style="@style/KamerayaOutlinedButtonStyle"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/plus_jakarta_sans_medium"
@@ -68,11 +68,12 @@
             <Button
                 android:id="@+id/btn_item_dialog_box_positive"
                 style="@style/KamerayaTextViewStyle.BodyMedium"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/plus_jakarta_sans_medium"
                 android:text="@string/dialog_positive_button"
+                android:textColor="@color/color_button_text"
                 tools:ignore="TouchTargetSizeCheck,TextContrastCheck,VisualLintBounds" />
 
         </LinearLayout>

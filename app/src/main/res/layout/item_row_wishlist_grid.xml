@@ -2,7 +2,7 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="8dp"
     android:layout_marginVertical="8dp"
@@ -14,8 +14,8 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/siv_row_wishlist_grid_camera_image"
-            android:layout_width="170dp"
-            android:layout_height="170dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:scaleType="fitCenter"
             android:background="@color/white"
             android:src="@drawable/iv_placeholder"
@@ -158,6 +158,8 @@
             android:fontFamily="@font/plus_jakarta_sans_medium"
             android:text="@string/add_to_cart"
             app:icon="@drawable/ic_cart"
+            app:iconTint="@color/color_button_icon"
+            android:textColor="@color/color_button_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

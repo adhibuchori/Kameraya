@@ -1,12 +1,12 @@
 package com.adhibuchori.data.auth.interceptor
 
-import com.adhibuchori.data.auth.preference.AuthPreference
+import com.adhibuchori.data.utils.preference.AppPreference
 import kotlinx.coroutines.runBlocking
 import okhttp3.Interceptor
 import okhttp3.Response
 
 class SessionInterceptor(
-    private val authPreference: AuthPreference,
+    private val appPreference: AppPreference,
 ) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
@@ -14,7 +14,7 @@ class SessionInterceptor(
         val response = chain.proceed(request)
 
         if (response.code == 401) {
-            runBlocking { authPreference.logout() }
+            runBlocking { appPreference.logout() }
             return response
         }
 

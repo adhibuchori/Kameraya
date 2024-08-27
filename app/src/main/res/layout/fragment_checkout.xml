@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.transaction.checkout.CheckoutFragment">
+    tools:context=".ui.main.payment.checkout.CheckoutFragment">
 
     <include
         android:id="@+id/checkout_page_toolbar"
@@ -81,7 +81,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_checkout_page_payment_method_title">
+                app:layout_constraintTop_toBottomOf="@+id/tv_checkout_page_payment_method_title"
+                app:strokeColor="@color/neutral_20">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -121,7 +122,8 @@
                         app:cardCornerRadius="100dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:strokeColor="@color/neutral_20">
 
                         <ImageView
                             android:id="@+id/mcv_checkout_page_arrow_next_icon"
@@ -184,6 +186,7 @@
         android:layout_height="48dp"
         android:layout_marginEnd="16dp"
         android:text="@string/btn_buy"
+        android:textColor="@color/color_button_text"
         app:layout_constraintBottom_toBottomOf="@+id/tv_checkout_page_total_payment_data"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_checkout_page_total_payment"

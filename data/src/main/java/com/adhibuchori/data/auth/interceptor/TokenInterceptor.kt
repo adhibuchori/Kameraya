@@ -1,7 +1,7 @@
 package com.adhibuchori.data.auth.interceptor
 
 import com.adhibuchori.data.BuildConfig
-import com.adhibuchori.data.auth.preference.AuthPreference
+import com.adhibuchori.data.utils.preference.AppPreference
 import com.adhibuchori.data.auth.request.RefreshRequest
 import com.adhibuchori.data.auth.response.RefreshResponse
 import com.adhibuchori.data.auth.source.AuthApiService
@@ -18,20 +18,20 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class TokenInterceptor(
-    private val authPreference: AuthPreference,
+    private val appPreference: AppPreference,
     private val chuckInterceptor: ChuckerInterceptor,
 ) : Authenticator {
     override fun authenticate(route: Route?, response: Response): Request? {
         val refreshToken = runBlocking {
-            authPreference.getRefreshToken().firstOrNull()
+            appPreference.getRefreshToken().firstOrNull()
         }
 
         synchronized(this) {
             return runBlocking {
                 try {
                     val newToken = refreshToken(RefreshRequest(refreshToken))
-                    authPreference.saveRefreshToken(newToken.data?.refreshToken ?: "")
-                    authPreference.saveAccessToken(newToken.data?.accessToken ?: "")
+                    appPreference.saveRefreshToken(newToken.data?.refreshToken ?: "")
+                    appPreference.saveAccessToken(newToken.data?.accessToken ?: "")
                     response.request
                         .newBuilder()
                         .header("Authorization", "Bearer ${newToken.data?.accessToken}")
@@ -67,8 +67,8 @@ class TokenInterceptor(
 
         try {
             val newRequest = apiService.refresh(tokenRequest)
-            authPreference.saveAccessToken(newRequest.data?.accessToken ?: "")
-            authPreference.saveRefreshToken(newRequest.data?.refreshToken ?: "")
+            appPreference.saveAccessToken(newRequest.data?.accessToken ?: "")
+            appPreference.saveRefreshToken(newRequest.data?.refreshToken ?: "")
             return newRequest
         } catch (e: Exception) {
             throw Exception(e.message)

@@ -79,6 +79,13 @@
                 android:defaultValue=""
                 app:argType="string" />
         </action>
+        <action
+            android:id="@+id/action_mainFragment_to_paymentStatusFragment"
+            app:destination="@id/paymentStatusFragment" >
+            <argument
+                android:name="fulfillmentModelData"
+                app:argType="com.adhibuchori.domain.payment.fulfillment.FulfillmentModel" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -98,20 +105,29 @@
         android:id="@+id/notificationFragment"
         android:name="com.adhibuchori.kameraya.ui.main.notification.NotificationFragment"
         android:label="fragment_notification"
-        tools:layout="@layout/fragment_notification" />
+        tools:layout="@layout/fragment_notification" >
+        <action
+            android:id="@+id/action_notificationFragment_to_paymentStatusFragment"
+            app:destination="@id/paymentStatusFragment" >
+            <argument
+                android:name="fulfillmentModelData"
+                app:argType="com.adhibuchori.domain.payment.fulfillment.FulfillmentModel" />
+        </action>
+    </fragment>
     <fragment
         android:id="@+id/cartFragment"
-        android:name="com.adhibuchori.kameraya.ui.main.transaction.cart.CartFragment"
+        android:name="com.adhibuchori.kameraya.ui.main.payment.cart.CartFragment"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart">
         <action
             android:id="@+id/action_cartFragment_to_checkoutFragment"
-            app:destination="@id/checkoutFragment" />
+            app:destination="@id/checkoutFragment">
+            <argument
+                android:name="selectedItems"
+                app:argType="com.adhibuchori.domain.payment.cart.CartModel[]" />
+        </action>
         <action
             android:id="@+id/action_cartFragment_to_productDetailFragment"
-            app:destination="@id/productDetailFragment" />
-        <action
-            android:id="@+id/action_cartFragment_to_productDetailFragment2"
             app:destination="@id/productDetailFragment">
             <argument
                 android:name="productId"
@@ -124,6 +140,8 @@
         android:name="com.adhibuchori.kameraya.ui.main.productDetail.ProductDetailFragment"
         android:label="fragment_product_detail"
         tools:layout="@layout/fragment_product_detail">
+        <deepLink
+            app:uri="https://kameraya.link/products/{productId}" />
         <argument
             android:name="productId"
             app:argType="string" />
@@ -135,7 +153,11 @@
             app:destination="@id/cartFragment" />
         <action
             android:id="@+id/action_productDetailFragment_to_checkoutFragment"
-            app:destination="@id/checkoutFragment" />
+            app:destination="@id/checkoutFragment">
+            <argument
+                android:name="selectedProduct"
+                app:argType="com.adhibuchori.domain.productDetail.ProductDetailModel[]" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/reviewFragment"
@@ -148,18 +170,28 @@
     </fragment>
     <fragment
         android:id="@+id/checkoutFragment"
-        android:name="com.adhibuchori.kameraya.ui.main.transaction.checkout.CheckoutFragment"
+        android:name="com.adhibuchori.kameraya.ui.main.payment.checkout.CheckoutFragment"
         android:label="fragment_checkout"
         tools:layout="@layout/fragment_checkout">
+        <argument
+            android:name="checkoutItem"
+            app:argType="com.adhibuchori.domain.payment.checkout.CheckoutItem" />
         <action
             android:id="@+id/action_checkoutFragment_to_paymentStatusFragment"
-            app:destination="@id/paymentStatusFragment" />
+            app:destination="@id/paymentStatusFragment" >
+            <argument
+                android:name="fulfillmentModelData"
+                app:argType="com.adhibuchori.domain.payment.fulfillment.FulfillmentModel" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/paymentStatusFragment"
         android:name="com.adhibuchori.kameraya.ui.main.payment.paymentStatus.PaymentStatusFragment"
         android:label="fragment_payment_status"
         tools:layout="@layout/fragment_payment_status">
+        <argument
+            android:name="fulfillmentModelData"
+            app:argType="com.adhibuchori.domain.payment.fulfillment.FulfillmentModel" />
         <action
             android:id="@+id/action_paymentStatusFragment_to_mainFragment"
             app:destination="@id/mainFragment" />

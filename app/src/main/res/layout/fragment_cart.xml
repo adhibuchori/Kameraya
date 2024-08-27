@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.transaction.cart.CartFragment">
+    tools:context=".ui.main.payment.cart.CartFragment">
 
     <include
         android:id="@+id/cart_page_toolbar"
@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:fontFamily="@font/plus_jakarta_sans_medium"
+        android:fontFamily="@font/plus_jakarta_sans_semi_bold"
         android:text="@string/tv_btn_delete_product"
         android:textColor="@color/color_primary"
         app:layout_constraintBottom_toBottomOf="@+id/tv_cart_page_select_all_product"
@@ -107,6 +107,7 @@
         android:layout_height="48dp"
         android:layout_marginEnd="16dp"
         android:text="@string/btn_checkout"
+        android:textColor="@color/color_button_text"
         app:layout_constraintBottom_toBottomOf="@+id/tv_cart_page_total_payment_data"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_cart_page_total_payment"
@@ -125,14 +126,28 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="TextContrastCheck" />
 
-    <ProgressBar
+    <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/pb_cart_page_progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:indeterminate="true"
         android:visibility="gone"
+        app:indicatorColor="@color/color_primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:trackColor="@color/color_primary_light" />
+
+    <include
+        android:id="@+id/cart_page_state"
+        layout="@layout/item_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/md_cart_page_second_divider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/md_cart_page_first_divider" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

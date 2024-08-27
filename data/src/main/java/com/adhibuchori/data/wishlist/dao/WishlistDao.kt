@@ -4,7 +4,6 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.adhibuchori.data.transaction.cart.entity.CartEntity
 import com.adhibuchori.data.wishlist.entity.WishlistEntity
 import kotlinx.coroutines.flow.Flow
 

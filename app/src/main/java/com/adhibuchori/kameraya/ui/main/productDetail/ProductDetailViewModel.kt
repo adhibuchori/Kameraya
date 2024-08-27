@@ -1,17 +1,22 @@
 package com.adhibuchori.kameraya.ui.main.productDetail
 
+import android.os.Bundle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.adhibuchori.data.utils.mapProductDetailToCartModel
 import com.adhibuchori.data.utils.mapProductDetailToWishlistModel
 import com.adhibuchori.domain.Resource
-import com.adhibuchori.domain.repository.cart.AddCartUseCase
-import com.adhibuchori.domain.repository.productDetail.IProductDetailRepository
-import com.adhibuchori.domain.repository.productDetail.ProductDetailModel
-import com.adhibuchori.domain.repository.productDetail.ProductVariant
-import com.adhibuchori.domain.repository.wishlist.useCase.AddWishlistItemUseCase
-import com.adhibuchori.domain.repository.wishlist.useCase.IsItemInWishlistUseCase
-import com.adhibuchori.domain.repository.wishlist.useCase.RemoveWishlistITemUseCase
+import com.adhibuchori.domain.firebaseAnalytics.IFirebaseAnalyticsRepository
+import com.adhibuchori.domain.productDetail.IProductDetailRepository
+import com.adhibuchori.domain.productDetail.ProductDetailModel
+import com.adhibuchori.domain.productDetail.ProductVariant
+import com.adhibuchori.domain.payment.cart.AddCartUseCase
+import com.adhibuchori.domain.payment.cart.CartModel
+import com.adhibuchori.domain.wishlist.usecase.AddWishlistItemUseCase
+import com.adhibuchori.domain.wishlist.usecase.IsItemInWishlistUseCase
+import com.adhibuchori.domain.wishlist.usecase.RemoveWishlistITemUseCase
+import com.adhibuchori.kameraya.utils.firebase.FirebaseConstant
+import com.google.firebase.analytics.FirebaseAnalytics
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -24,8 +29,8 @@ class ProductDetailViewModel(
     private val addWishlistItemUseCase: AddWishlistItemUseCase,
     private val removeWishlistITemUseCase: RemoveWishlistITemUseCase,
     private val isItemInWishlistUseCase: IsItemInWishlistUseCase,
+    private val firebaseAnalytics: IFirebaseAnalyticsRepository,
 ) : ViewModel() {
-
     private val _productDetail = MutableStateFlow<Resource<ProductDetailModel>>(Resource.Loading)
     val productDetail: StateFlow<Resource<ProductDetailModel>> get() = _productDetail
 
@@ -82,9 +87,22 @@ class ProductDetailViewModel(
         }
     }
 
+    fun mapProductDetailToCart(
+        data: ProductDetailModel?,
+        selectedVariant: ProductVariant?,
+    ): CartModel = mapProductDetailToCartModel(data, selectedVariant)
+
     fun fetchProductDetail(id: String) {
         viewModelScope.launch {
             _productDetail.value = detailRepository.getProductDetail(id)
         }
+    }
+
+    fun logScreenView(bundle: Bundle) {
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle)
+    }
+
+    fun logButtonEvent(bundle: Bundle) {
+        firebaseAnalytics.logEvent(FirebaseConstant.Event.BUTTON_CLICK, bundle)
     }
 }

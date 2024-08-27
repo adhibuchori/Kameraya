@@ -1,12 +1,12 @@
 package com.adhibuchori.data.auth.repositoryImpl
 
 import android.util.Log
-import com.adhibuchori.data.auth.preference.AuthPreference
+import com.adhibuchori.data.utils.preference.AppPreference
 import com.adhibuchori.data.auth.request.LoginRequest
 import com.adhibuchori.data.auth.request.RegisterRequest
 import com.adhibuchori.data.auth.source.AuthApiService
 import com.adhibuchori.domain.Resource
-import com.adhibuchori.domain.repository.IAuthRepository
+import com.adhibuchori.domain.auth.IAuthRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -19,7 +19,7 @@ import java.io.IOException
 
 class AuthRepositoryImpl(
     private val authAPIService: AuthApiService,
-    private val authPreference: AuthPreference,
+    private val appPreference: AppPreference,
 ) : IAuthRepository {
 
     override suspend fun login(email: String, password: String): Resource<Boolean> {
@@ -30,12 +30,10 @@ class AuthRepositoryImpl(
             val userName = response.data?.userName.orEmpty()
             val userImage = response.data?.userImage.orEmpty()
 
-            Log.d("userImageLoginFunctionAuthRepository: ", userImage)
-
             val token = response.data?.accessToken.orEmpty()
             val refreshToken = response.data?.refreshToken.orEmpty()
 
-            authPreference.run {
+            appPreference.run {
                 saveUserName(userName)
                 saveUserImage(userImage)
                 saveEmail(email)
@@ -62,11 +60,26 @@ class AuthRepositoryImpl(
         }
     }
 
-    override suspend fun isLogin(): Flow<String?> = authPreference.getAccessToken()
+    override suspend fun isLogin(): Flow<String?> = appPreference.getAccessToken()
+    override suspend fun setUserName(): Flow<String?> = appPreference.getUserName()
+    override suspend fun setUserImage(): Flow<String?> = appPreference.getUserImage()
+    override suspend fun setEmail(): Flow<String?> = appPreference.getEmail()
 
-    override suspend fun setUserName(): Flow<String?> = authPreference.getUserName()
-    override suspend fun setUserImage(): Flow<String?> = authPreference.getUserImage()
-    override suspend fun setEmail(): Flow<String?> = authPreference.getEmail()
+    override fun setTheme(): Flow<Boolean> = appPreference.getThemeSetting()
+    override suspend fun saveThemeSetting(isDarkModeActive: Boolean) {
+        appPreference.saveThemeSetting(isDarkModeActive)
+    }
+
+    override fun setLanguage(): Flow<Boolean> = appPreference.getLanguageSetting()
+    override suspend fun saveLanguageSetting(isLanguageChangeActive: Boolean) {
+        appPreference.saveLanguageSetting(isLanguageChangeActive)
+    }
+
+    override fun readOnBoardingShown(): Flow<Boolean> = appPreference.readOnBoardingShown()
+
+    override suspend fun saveOnBoardingShown(isShown: Boolean) {
+        appPreference.saveOnBoardingShown(isShown)
+    }
 
     override suspend fun register(email: String, password: String): Resource<Boolean> {
         return try {
@@ -76,7 +89,7 @@ class AuthRepositoryImpl(
             val token = response.data?.accessToken.orEmpty()
             val refreshToken = response.data?.refreshToken.orEmpty()
 
-            authPreference.run {
+            appPreference.run {
                 saveEmail(email)
                 saveAccessToken(token)
                 saveRefreshToken(refreshToken)
@@ -101,12 +114,10 @@ class AuthRepositoryImpl(
 
             val response = authAPIService.profile(userNameRequestBody, userImagePart)
 
-            authPreference.run {
+            appPreference.run {
                 saveUserName(userName)
                 saveUserImage(userImageFile.toString())
             }
-
-            Log.d("userImageProfileFunctionAuthRepository: ", userImageFile.toString())
 
             Resource.Success(response.data?.userName.orEmpty().isNotEmpty())
 
@@ -118,20 +129,7 @@ class AuthRepositoryImpl(
 
     override suspend fun logout(): Flow<Resource<String?>> = flow {
         emit(Resource.Loading)
-        authPreference.logout()
+        appPreference.logout()
         emit(Resource.Success("success"))
-    }
-
-    companion object {
-        @Volatile
-        private var instance: AuthRepositoryImpl? = null
-
-        fun getInstance(
-            authAPIService: AuthApiService,
-            authPreference: AuthPreference,
-        ): AuthRepositoryImpl =
-            instance ?: synchronized(this) {
-                instance ?: AuthRepositoryImpl(authAPIService, authPreference)
-            }.also { instance = it }
     }
 }

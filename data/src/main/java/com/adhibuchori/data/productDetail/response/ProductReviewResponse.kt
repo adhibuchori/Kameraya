@@ -12,4 +12,3 @@ data class DataItem(
     val userReview: String? = null,
     val userRating: Double? = null,
 )
-

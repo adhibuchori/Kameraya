@@ -1,14 +1,14 @@
 package com.adhibuchori.data.auth.interceptor
 
 import com.adhibuchori.data.BuildConfig
-import com.adhibuchori.data.auth.preference.AuthPreference
+import com.adhibuchori.data.utils.preference.AppPreference
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.runBlocking
 import okhttp3.Interceptor
 import okhttp3.Response
 
 class AuthInterceptor(
-    private val authPreference: AuthPreference,
+    private val appPreference: AppPreference,
 ) : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
@@ -24,7 +24,7 @@ class AuthInterceptor(
 
             else -> {
                 val accessToken = runBlocking {
-                    authPreference.getAccessToken().firstOrNull()
+                    appPreference.getAccessToken().firstOrNull()
                 }
                 request
                     .newBuilder()
