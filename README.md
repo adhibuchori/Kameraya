@@ -11,10 +11,9 @@
 Experience secure transactions with real-time payment status updates powered by Firebase Remote Config, ensuring peace of mind with every order. Enjoy the ultimate user experience, enhanced by smooth animations. Built with XML, Kameraya is designed for speed and reliability, offering a seamless shopping experience. Available starting from Android 8.0 "Oreo", Kameraya brings the world of cameras to your fingertips.
 
 ## App Preview
-<div align="center">
-  <img src="https://drive.google.com/uc?export=view&id=1kwhdjm2h6Gma_ri8pppNRNuroPPZFsjc" alt="カメラ屋 (Kameraya) App Preview">
-  <p>Figure 2. カメラ屋 (Kameraya) App Preview.</p>
-</div>
+https://github.com/user-attachments/assets/e26fb2cb-980a-4830-81a9-bdae889bddcb
+
+Figure 2. カメラ屋 (Kameraya) App Preview.
 
 ## Table of Contents
 1. [App Introduction](#app-introduction)
