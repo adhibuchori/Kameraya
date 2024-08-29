@@ -11,7 +11,7 @@
 Experience secure transactions with real-time payment status updates powered by Firebase Remote Config, ensuring peace of mind with every order. Enjoy the ultimate user experience, enhanced by smooth animations. Built with XML, Kameraya is designed for speed and reliability, offering a seamless shopping experience. Available starting from Android 8.0 "Oreo", Kameraya brings the world of cameras to your fingertips.
 
 ## App Preview
-https://github.com/user-attachments/assets/e26fb2cb-980a-4830-81a9-bdae889bddcb
+https://github.com/user-attachments/assets/4c695248-02dd-4534-ae2d-418c9778f8f8
 
 Figure 2. カメラ屋 (Kameraya) App Preview.
 
@@ -35,9 +35,11 @@ Figure 2. カメラ屋 (Kameraya) App Preview.
 </div>
 
 ## Tree
+
+**App Module**
 ```
 .
-└── kameraya
+└── app
     ├── ui
     │   ├── auth
     │   │   ├── login
@@ -63,6 +65,76 @@ Figure 2. カメラ屋 (Kameraya) App Preview.
         ├── extension
         ├── firebase
         └── notification
+```
+
+**Data Module**
+```
+.
+└── data
+    ├── auth
+    │   ├── interceptor
+    │   ├── remote
+    │   ├── repositoryImpl
+    │   ├── request
+    │   ├── response
+    │   └── source
+    ├── di
+    ├── firebaseAnalytics
+    ├── payment
+    │   ├── cart
+    │   │   ├── dao
+    │   │   ├── database
+    │   │   ├── entity
+    │   │   └── repositoryImpl
+    │   ├── fullfilment
+    │   │   ├── repositoryImpl
+    │   │   ├── request
+    │   │   ├── response
+    │   │   └── source
+    │   └── paymentMethod
+    │       ├── repositoryImpl
+    │       └── response
+    ├── productDetail
+    │   ├── repositoryImpl
+    │   ├── response
+    │   └── source
+    ├── products
+    ├── store
+    │   ├── repositoryImpl
+    │   ├── request
+    │   ├── response
+    │   └── source
+    ├── utils
+    │   ├── extension
+    │   └── preference
+    └── wishlist
+        ├── dao
+        ├── database
+        ├── entity
+        └── repositoryImpl
+```
+
+**Domain Module**
+```
+.
+└── domain
+    ├── auth
+    ├── firebaseAnalytics
+    ├── notification
+    ├── payment
+    │   ├── cart
+    │   ├── checkout
+    │   ├── fulfillment
+    │   │   └── usecase
+    │   ├── paymentMethod
+    │   ├── rating
+    │   │   └── usecase
+    │   └── transaction
+    ├── preference
+    ├── productDetail
+    ├── store
+    └── wishlist
+        └── usecase
 ```
 
 ## App Features
@@ -124,7 +196,7 @@ Explore further insights and detailed information regarding this project by clic
 ## Installation
 Download the application through the following Google Drive [link here](https://drive.google.com/file/d/1FmtERCCnyo1Edjp8KBAMWiNVEhHygxC-/view?usp=drive_link). Available starting from Android 8.0 "Oreo".
 
-### How to Run the Project
+## How to Run the Project
 <div align="center">
  <img src="https://drive.google.com/uc?id=12GOrk1XF2k_eVJL_MwjwIy3cC8YzQpNj" alt="カメラ屋 (Kameraya) How to Run the Project Section 2">
   <p>Figure 7. カメラ屋 (Kameraya) How to Run the Project Section 1.</p>
