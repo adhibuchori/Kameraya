@@ -19,18 +19,51 @@ Figure 2. カメラ屋 (Kameraya) App Preview.
 1. [App Introduction](#app-introduction)
 2. [App Preview](#app-preview)
 3. [Tech Stack](#tech-stack)
-4. [App Features](#app-features)
-5. [App Architecture](#app-architecture)
-6. [Design Pattern](#design-pattern)
-7. [Dependency Injection](#dependency-injection)
-8. [Project Document](#project-document)
-9. [Installation](#installation)
+4. [Tree](#tree)
+5. [App Features](#app-features)
+6. [App Architecture](#app-architecture)
+7. [Design Pattern](#design-pattern)
+8. [Dependency Injection](#dependency-injection)
+9. [Project Document](#project-document)
+10. [Installation](#installation)
+11. [How to Run the Project](#how-to-run-the-project)
 
 ## Tech Stack
 <div align="center">
  <img src="https://drive.google.com/uc?id=1CLCqrVSAyQaYYsBXScZOOogWUKvUqecy" alt="カメラ屋 (Kameraya) Tech Stack">
   <p>Figure 3. カメラ屋 (Kameraya) Tech Stack.</p>
 </div>
+
+## Tree
+```
+.
+└── kameraya
+    ├── ui
+    │   ├── auth
+    │   │   ├── login
+    │   │   └── register
+    │   ├── main
+    │   │   ├── home
+    │   │   ├── notification
+    │   │   ├── payment
+    │   │   │   ├── cart
+    │   │   │   ├── checkout
+    │   │   │   ├── paymentStatus
+    │   │   │   └── transaction
+    │   │   ├── productDetail
+    │   │   ├── profile
+    │   │   ├── review
+    │   │   ├── search
+    │   │   └── wishlist
+    │   ├── onboarding
+    │   └── splash
+    └── utils
+        ├── base
+        ├── di
+        ├── extension
+        ├── firebase
+        └── notification
+```
 
 ## App Features
 | **Feature**           | **Description**                                                                                                                                | **Technology**                                            |
