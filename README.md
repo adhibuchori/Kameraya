@@ -69,7 +69,7 @@ Figure 2. カメラ屋 (Kameraya) App Preview.
 
 ## Design Pattern
 <div align="center">
- <img src="https://drive.google.com/uc?id=1ovtfICiUVKW645vAFOw3MfgSlBeyszdr" alt="カメラ屋 (Kameraya) App Design Pattern">
+ <img src="https://drive.google.com/uc?id=1phJS2KGTce7ufY_SJsRnuh-90Dck_Q8V" alt="カメラ屋 (Kameraya) App Design Pattern">
   <p>Figure 5. カメラ屋 (Kameraya) App Design Pattern</p>
 </div>
 
@@ -81,7 +81,7 @@ Figure 2. カメラ屋 (Kameraya) App Preview.
 
 ## Dependency Injection
 <div align="center">
- <img src="https://drive.google.com/uc?id=1iLHt4uzNePrDjxhIiVcIVYbcRTfIx5ju" alt="カメラ屋 (Kameraya) App Design Pattern">
+ <img src="https://drive.google.com/uc?id=1iLHt4uzNePrDjxhIiVcIVYbcRTfIx5ju" alt="カメラ屋 (Kameraya) Dependency Injection">
   <p>Figure 6. カメラ屋 (Kameraya) Dependency Injection.</p>
 </div>
 
@@ -90,3 +90,14 @@ Explore further insights and detailed information regarding this project by clic
 
 ## Installation
 Download the application through the following Google Drive [link here](https://drive.google.com/file/d/1FmtERCCnyo1Edjp8KBAMWiNVEhHygxC-/view?usp=drive_link). Available starting from Android 8.0 "Oreo".
+
+### How to Run the Project
+<div align="center">
+ <img src="https://drive.google.com/uc?id=12GOrk1XF2k_eVJL_MwjwIy3cC8YzQpNj" alt="カメラ屋 (Kameraya) How to Run the Project Section 2">
+  <p>Figure 7. カメラ屋 (Kameraya) How to Run the Project Section 1.</p>
+</div>
+
+<div align="center">
+ <img src="https://drive.google.com/uc?id=1s7RS9RsYwn7FBH96l8CIOZMva0UHR3lW" alt="カメラ屋 (Kameraya) How to Run the Project Section 2">
+  <p>Figure 8. カメラ屋 (Kameraya) How to Run the Project Section 2.</p>
+</div>
